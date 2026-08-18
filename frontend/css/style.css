@@ -1,0 +1,394 @@
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3e8ff;
+  margin: 0;
+  color: #4a235a;
+}
+
+
+/* CONTAINER PRINCIPAL */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(123, 44, 191, 0.15);
+  border: 1px solid #ead5f7;
+}
+
+
+/* CAMPOS */
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #d8b4e8;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
+input,
+select,
+textarea {
+  background: #fcf8ff;
+  color: #4a235a;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #c77dff;
+  box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.15);
+}
+
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+/* BOTÕES ROSA */
+button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+
+button:hover {
+  background: #ff4fa3;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(255, 105, 180, 0.3);
+}
+
+
+/* TÍTULOS */
+h1 {
+  color: #7b2cbf;
+  text-align: center;
+}
+
+
+h2 {
+  color: #8e44ad;
+}
+
+
+h3 {
+  color: #9b59b6;
+}
+
+
+/* CARDS */
+.card {
+  border: 1px solid #e3c8f2;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(123, 44, 191, 0.10);
+}
+
+
+/* TRIAGEM VERDE */
+.verde {
+  background: #2ecc71;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+
+/* TRIAGEM AMARELA */
+.amarelo {
+  background: #f1c40f;
+  color: #5a4200;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+
+/* TRIAGEM VERMELHA */
+.vermelho {
+  background: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+
+/* LINKS */
+a {
+  color: #8e44ad;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+a:hover {
+  color: #ff69b4;
+}
+
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .container {
+    width: 92%;
+    padding: 18px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 15px;
+  }
+}
+
+
+/* ==============================
+   HOSPITAL SENTINELA
+   TEMA ROXO + ROSA
+   ============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(circle at top left, #d8b4fe, transparent 35%),
+    radial-gradient(circle at bottom right, #c084fc, transparent 35%),
+    linear-gradient(135deg, #f3e8ff, #e9d5ff);
+
+  color: #4c1d95;
+}
+
+
+/* CAIXA DE LOGIN */
+
+.login {
+  width: 90%;
+  max-width: 420px;
+
+  padding: 40px 35px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border-radius: 25px;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 35px rgba(91, 33, 182, 0.20),
+    0 0 30px rgba(255, 105, 180, 0.12);
+
+  border: 1px solid #e9d5ff;
+}
+
+
+/* ÍCONE DO HOSPITAL */
+
+.icone {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #7e22ce
+  );
+
+  color: white;
+
+  font-size: 35px;
+  font-weight: bold;
+
+  box-shadow:
+    0 8px 20px rgba(147, 51, 234, 0.35);
+}
+
+
+/* TÍTULO */
+
+.login h2 {
+  margin: 0;
+
+  color: #6b21a8;
+
+  font-size: 28px;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* SUBTÍTULO */
+
+.subtitulo {
+  margin: 8px 0 25px;
+
+  color: #9333ea;
+
+  font-size: 14px;
+}
+
+
+/* CAMPOS */
+
+.login input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  margin-top: 14px;
+
+  border-radius: 12px;
+
+  border: 2px solid #e9d5ff;
+
+  background: #faf5ff;
+
+  color: #4c1d95;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+
+.login input::placeholder {
+  color: #a78bfa;
+}
+
+
+.login input:focus {
+  border-color: #a855f7;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(168, 85, 247, 0.12);
+}
+
+
+/* BOTÃO FLUTUANTE ROSA */
+
+.login button {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #ff69b4,
+    #ec4899
+  );
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  /* SOMBRA ROSA */
+  box-shadow:
+    0 8px 0 #c02672,
+    0 12px 25px rgba(236, 72, 153, 0.45);
+
+  transition: all 0.2s ease;
+}
+
+
+/* EFEITO AO PASSAR O MOUSE */
+
+.login button:hover {
+  transform: translateY(-4px);
+
+  background: linear-gradient(
+    135deg,
+    #ff85c2,
+    #f472b6
+  );
+
+  box-shadow:
+    0 12px 0 #c02672,
+    0 18px 30px rgba(236, 72, 153, 0.55);
+}
+
+
+/* EFEITO AO CLICAR */
+
+.login button:active {
+  transform: translateY(4px);
+
+  box-shadow:
+    0 4px 0 #c02672,
+    0 7px 15px rgba(236, 72, 153, 0.35);
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+  .login {
+    padding: 30px 22px;
+  }
+
+  .login h2 {
+    font-size: 24px;
+  }
+
+  .icone {
+    width: 65px;
+    height: 65px;
+    font-size: 30px;
+  }
+
+}

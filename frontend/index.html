@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hospital Sentinela</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Arial, sans-serif;
+
+      background:
+        radial-gradient(circle at top, #123b70, transparent 45%),
+        radial-gradient(circle at bottom, #061a35, transparent 55%),
+        #020b1c;
+
+      color: white;
+    }
+
+    /* CAIXA PRINCIPAL */
+
+    .container {
+      width: 90%;
+      max-width: 420px;
+
+      padding: 45px 35px;
+
+      text-align: center;
+
+      background: rgba(5, 24, 50, 0.95);
+
+      border: 1px solid #2196f3;
+
+      border-radius: 25px;
+
+      box-shadow:
+        0 0 20px rgba(33, 150, 243, 0.35),
+        0 0 50px rgba(33, 150, 243, 0.15);
+    }
+
+    /* TÍTULO */
+
+    h2 {
+      margin: 0 0 10px;
+
+      color: #7dd3fc;
+
+      font-size: 30px;
+
+      letter-spacing: 1px;
+
+      text-shadow:
+        0 0 5px #7dd3fc,
+        0 0 10px #38bdf8,
+        0 0 20px #0ea5e9;
+    }
+
+    /* SUBTÍTULO */
+
+    .subtitulo {
+      margin-bottom: 30px;
+
+      color: #60a5fa;
+
+      text-shadow:
+        0 0 6px #3b82f6;
+    }
+
+    /* CAMPOS */
+
+    input {
+      width: 100%;
+
+      padding: 15px;
+
+      margin: 10px 0;
+
+      border-radius: 12px;
+
+      border: 1px solid #2563eb;
+
+      background: #061a35;
+
+      color: #e0f2fe;
+
+      font-size: 16px;
+
+      outline: none;
+
+      transition: 0.3s;
+    }
+
+    input::placeholder {
+      color: #6b9bd1;
+    }
+
+    input:focus {
+      border-color: #38bdf8;
+
+      box-shadow:
+        0 0 8px #0ea5e9,
+        0 0 20px rgba(14, 165, 233, 0.4);
+    }
+
+    /* =========================
+       BOTÃO AZUL CLARO
+       ========================= */
+
+    button {
+      width: 100%;
+
+      margin-top: 25px;
+
+      padding: 15px;
+
+      border: none;
+
+      border-radius: 14px;
+
+      background: linear-gradient(
+        135deg,
+        #7dd3fc,
+        #38bdf8
+      );
+
+      color: #ffffff;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      letter-spacing: 1px;
+
+      /* LETRAS BRILHANTES */
+
+      text-shadow:
+        0 0 5px white,
+        0 0 10px white;
+
+      /* BOTÃO FLUTUANDO */
+
+      box-shadow:
+        0 0 8px #38bdf8,
+        0 0 18px #0ea5e9,
+        0 8px 0 #0284c7,
+        0 15px 30px rgba(14, 165, 233, 0.5);
+
+      transition: all 0.25s ease;
+    }
+
+    /* HOVER */
+
+    button:hover {
+
+      transform: translateY(-6px);
+
+      background: linear-gradient(
+        135deg,
+        #bae6fd,
+        #7dd3fc
+      );
+
+      box-shadow:
+        0 0 10px #e0f2fe,
+        0 0 25px #38bdf8,
+        0 0 45px #0ea5e9,
+        0 12px 0 #0284c7,
+        0 25px 40px rgba(14, 165, 233, 0.6);
+    }
+
+    /* CLIQUE */
+
+    button:active {
+
+      transform: translateY(3px);
+
+      box-shadow:
+        0 0 5px #38bdf8,
+        0 0 15px #0ea5e9,
+        0 4px 0 #0284c7;
+    }
+
+    /* MENSAGEM */
+
+    #mensagem {
+      margin-top: 18px;
+
+      color: #7dd3fc;
+
+      font-weight: bold;
+
+      text-shadow:
+        0 0 5px #38bdf8,
+        0 0 10px #0ea5e9;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 35px 25px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+
+    }
+
+    .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.logo img {
+  width: 110px;
+  height: 110px;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+
+  filter:
+    drop-shadow(0 0 5px #7dd3fc)
+    drop-shadow(0 0 15px #38bdf8)
+    drop-shadow(0 0 25px #0ea5e9);
+
+  transition: 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.08);
+
+  filter:
+    drop-shadow(0 0 8px #e0f2fe)
+    drop-shadow(0 0 20px #38bdf8)
+    drop-shadow(0 0 35px #0ea5e9);
+}
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">
+  <img src="logoo.png" alt="Logo Hospital Sentinela">
+</div>
+
+<h2>Hospital Sentinela</h2>
+
+    <p class="subtitulo">
+      Sistema de Atendimento
+    </p>
+
+    <input
+      id="usuario"
+      type="text"
+      placeholder="Usuário"
+    >
+
+    <input
+      id="senha"
+      type="password"
+      placeholder="Senha"
+    >
+
+    <button onclick="login()">
+      ENTRAR
+    </button>
+
+    <div id="mensagem"></div>
+
+  </div>
+
+
+  <script>
+
+    function login() {
+
+      const usuario =
+        document.getElementById("usuario").value;
+
+      const senha =
+        document.getElementById("senha").value;
+
+      const mensagem =
+        document.getElementById("mensagem");
+
+
+      if (usuario === "" || senha === "") {
+
+        mensagem.textContent =
+          "Preencha usuário e senha.";
+
+        return;
+      }
+
+
+      fetch("http://localhost:3000/login", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          usuario: usuario,
+          senha: senha
+        })
+
+      })
+
+      .then(response => {
+
+        if (!response.ok) {
+          throw new Error("Login inválido");
+        }
+
+        return response.json();
+
+      })
+
+      .then(data => {
+
+        if (data.tipo === "triagem") {
+          window.location.href = "triagem.html";
+        }
+
+        else if (data.tipo === "medico") {
+          window.location.href = "medico.html";
+        }
+
+        else if (data.tipo === "atendimento") {
+          window.location.href = "atendimento.html";
+        }
+
+        else {
+          mensagem.textContent =
+            "Tipo de usuário não encontrado.";
+        }
+
+      })
+
+      .catch(error => {
+
+        console.error(error);
+
+        mensagem.textContent =
+          "Usuário ou senha inválidos.";
+
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
