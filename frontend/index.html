@@ -317,24 +317,18 @@
       }
 
 
-      fetch("http://localhost:3000/login", {
-
+      fetch("/login", {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json"
-        },
-
         body: JSON.stringify({
-          usuario: usuario,
-          senha: senha
+          usuario: usuario.value,
+          senha: senha.value
         })
-
       })
-
-      .then(response => {
-
-        if (!response.ok) {
+      .then(r => r.json())
+.then(data => {
+        if (data.tipo === "triagem") location.href = "triagem.html";) {
           throw new Error("Login inválido");
         }
 
