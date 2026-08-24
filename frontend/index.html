@@ -364,7 +364,52 @@
 
     }
 
-  </script>
+  
+<script>
+function login() {
+  const usuario = document.getElementById("usuario").value;
+  const senha = document.getElementById("senha").value;
+  const mensagem = document.getElementById("mensagem");
+
+  // Validação de campos vazios
+  if (usuario === "" || senha === "") {
+    mensagem.textContent = "Preencha usuário e senha.";
+    return;
+  }
+
+  // Requisição para o servidor
+  fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json" // Vírgula corrigida aqui
+    },
+    body: JSON.stringify({ usuario, senha }) // Variáveis simplificadas e corretas
+  })
+  .then(response => {
+    // Verifica se a resposta HTTP foi bem-sucedida (status 200-299)
+    if (!response.ok) {
+      throw new Error("Erro na requisição de login");
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Validação centralizada do tipo de usuário retornada pelo servidor
+    if (data.tipo === "triagem") {
+      window.location.href = "triagem.html";
+    } else if (data.tipo === "medico") {
+      window.location.href = "medico.html";
+    } else if (data.tipo === "atendimento") {
+      window.location.href = "atendimento.html";
+    } else {
+      mensagem.textContent = "Tipo de usuário não encontrado.";
+    }
+  })
+  .catch(error => {
+    console.error("Erro no processo de login:", error);
+    mensagem.textContent = "Usuário ou senha inválidos.";
+  });
+}
+</script>
 
 </body>
 
