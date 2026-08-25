@@ -328,42 +328,22 @@
       })
       .then(r => r.json())
 .then(data => {
-        if (data.tipo === "triagem") location.href = "frotnend/triagem.html";) {
-          throw new Error("Login inválido");
-        }
+      function login() {
+  const usuario = document.getElementById("usuario").value;
+  const senha = document.getElementById("senha").value;
+  const mensagem = document.getElementById("mensagem");
 
-        return response.json();
+  if (usuario === "" || senha === "") {
+    mensagem.textContent = "Preencha usuário e senha.";
+    return;
+  }
 
-      })
-
-      .then(data => {
-
-        else if (data.tipo === "medico") {
-          window.location.href = "frontend/medico.html";
-        }
-
-        else if (data.tipo === "atendimento") {
-          window.location.href = "frontend/atendimento.html";
-        }
-
-        else {
-          mensagem.textContent =
-            "Tipo de usuário não encontrado.";
-        }
-
-      })
-
-      .catch(error => {
-
-        console.error(error);
-
-        mensagem.textContent =
-          "Usuário ou senha inválidos.";
-
-      });
-
-    }
-
+  if (usuario === "admin" && senha === "1234") {
+    mensagem.textContent = "Login realizado com sucesso!";
+  } else {
+    mensagem.textContent = "Usuário ou senha incorretos.";
+  }
+}
   
 <script>
 function login() {
