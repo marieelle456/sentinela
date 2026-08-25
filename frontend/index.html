@@ -328,7 +328,7 @@
       })
       .then(r => r.json())
 .then(data => {
-        if (data.tipo === "triagem") location.href = "triagem.html";) {
+        if (data.tipo === "triagem") location.href = "frotnend/triagem.html";) {
           throw new Error("Login inválido");
         }
 
@@ -339,11 +339,11 @@
       .then(data => {
 
         else if (data.tipo === "medico") {
-          window.location.href = "medico.html";
+          window.location.href = "frontend/medico.html";
         }
 
         else if (data.tipo === "atendimento") {
-          window.location.href = "atendimento.html";
+          window.location.href = "frontend/atendimento.html";
         }
 
         else {
