@@ -363,9 +363,12 @@ function login() {
     headers: {
       "Content-Type": "application/json" // Vírgula corrigida aqui
     },
-    body: JSON.stringify({ usuario, senha }) // Variáveis simplificadas e corretas
+    body: JSON.stringify({
+      usuario.value, 
+      senha: senha.value                
   })
-  .then(response => {
+  })
+  .then(=> r.json()) {
     // Verifica se a resposta HTTP foi bem-sucedida (status 200-299)
     if (!response.ok) {
       throw new Error("Erro na requisição de login");
