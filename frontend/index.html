@@ -30,8 +30,6 @@
       color: white;
     }
 
-    /* CAIXA PRINCIPAL */
-
     .container {
       width: 90%;
       max-width: 420px;
@@ -51,8 +49,6 @@
         0 0 50px rgba(33, 150, 243, 0.15);
     }
 
-    /* TÍTULO */
-
     h2 {
       margin: 0 0 10px;
 
@@ -68,8 +64,6 @@
         0 0 20px #0ea5e9;
     }
 
-    /* SUBTÍTULO */
-
     .subtitulo {
       margin-bottom: 30px;
 
@@ -78,8 +72,6 @@
       text-shadow:
         0 0 6px #3b82f6;
     }
-
-    /* CAMPOS */
 
     input {
       width: 100%;
@@ -115,10 +107,6 @@
         0 0 20px rgba(14, 165, 233, 0.4);
     }
 
-    /* =========================
-       BOTÃO AZUL CLARO
-       ========================= */
-
     button {
       width: 100%;
 
@@ -146,13 +134,9 @@
 
       letter-spacing: 1px;
 
-      /* LETRAS BRILHANTES */
-
       text-shadow:
         0 0 5px white,
         0 0 10px white;
-
-      /* BOTÃO FLUTUANDO */
 
       box-shadow:
         0 0 8px #38bdf8,
@@ -163,10 +147,7 @@
       transition: all 0.25s ease;
     }
 
-    /* HOVER */
-
     button:hover {
-
       transform: translateY(-6px);
 
       background: linear-gradient(
@@ -183,10 +164,7 @@
         0 25px 40px rgba(14, 165, 233, 0.6);
     }
 
-    /* CLIQUE */
-
     button:active {
-
       transform: translateY(3px);
 
       box-shadow:
@@ -195,10 +173,16 @@
         0 4px 0 #0284c7;
     }
 
-    /* MENSAGEM */
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     #mensagem {
       margin-top: 18px;
+
+      min-height: 22px;
 
       color: #7dd3fc;
 
@@ -209,10 +193,56 @@
         0 0 10px #0ea5e9;
     }
 
-    /* RESPONSIVO */
+    #mensagem.erro {
+      color: #f87171;
+
+      text-shadow:
+        0 0 5px #ef4444,
+        0 0 10px #dc2626;
+    }
+
+    #mensagem.sucesso {
+      color: #4ade80;
+
+      text-shadow:
+        0 0 5px #22c55e,
+        0 0 10px #16a34a;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-bottom: 15px;
+    }
+
+    .logo img {
+      width: 110px;
+      height: 110px;
+
+      object-fit: contain;
+
+      border-radius: 50%;
+
+      filter:
+        drop-shadow(0 0 5px #7dd3fc)
+        drop-shadow(0 0 15px #38bdf8)
+        drop-shadow(0 0 25px #0ea5e9);
+
+      transition: 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.08);
+
+      filter:
+        drop-shadow(0 0 8px #e0f2fe)
+        drop-shadow(0 0 20px #38bdf8)
+        drop-shadow(0 0 35px #0ea5e9);
+    }
 
     @media (max-width: 600px) {
-
       .container {
         padding: 35px 25px;
       }
@@ -220,54 +250,19 @@
       h2 {
         font-size: 25px;
       }
-
     }
-
-    .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.logo img {
-  width: 110px;
-  height: 110px;
-
-  object-fit: contain;
-
-  border-radius: 50%;
-
-  filter:
-    drop-shadow(0 0 5px #7dd3fc)
-    drop-shadow(0 0 15px #38bdf8)
-    drop-shadow(0 0 25px #0ea5e9);
-
-  transition: 0.3s ease;
-}
-
-.logo img:hover {
-  transform: scale(1.08);
-
-  filter:
-    drop-shadow(0 0 8px #e0f2fe)
-    drop-shadow(0 0 20px #38bdf8)
-    drop-shadow(0 0 35px #0ea5e9);
-}
-
   </style>
 </head>
-
 
 <body>
 
   <div class="container">
 
     <div class="logo">
-  <img src="logoo.png" alt="Logo Hospital Sentinela">
-</div>
+      <img src="logoo.png" alt="Logo Hospital Sentinela">
+    </div>
 
-<h2>Hospital Sentinela</h2>
+    <h2>Hospital Sentinela</h2>
 
     <p class="subtitulo">
       Sistema de Atendimento
@@ -277,15 +272,17 @@
       id="usuario"
       type="text"
       placeholder="Usuário"
+      autocomplete="username"
     >
 
     <input
       id="senha"
       type="password"
       placeholder="Senha"
+      autocomplete="current-password"
     >
 
-    <button onclick="login()">
+    <button id="btnEntrar" type="button" onclick="login()">
       ENTRAR
     </button>
 
@@ -293,106 +290,116 @@
 
   </div>
 
-
   <script>
+    async function login() {
 
-    function login() {
+      const usuarioInput = document.getElementById("usuario");
+      const senhaInput = document.getElementById("senha");
+      const mensagem = document.getElementById("mensagem");
+      const btnEntrar = document.getElementById("btnEntrar");
 
-      const usuario =
-        document.getElementById("usuario").value;
+      const usuario = usuarioInput.value.trim();
+      const senha = senhaInput.value.trim();
 
-      const senha =
-        document.getElementById("senha").value;
+      mensagem.className = "";
+      mensagem.textContent = "";
 
-      const mensagem =
-        document.getElementById("mensagem");
-
-
+      // Verifica campos vazios
       if (usuario === "" || senha === "") {
-
-        mensagem.textContent =
-          "Preencha usuário e senha.";
-
+        mensagem.textContent = "Preencha usuário e senha.";
+        mensagem.className = "erro";
         return;
       }
 
+      // Desabilita o botão enquanto faz o login
+      btnEntrar.disabled = true;
+      btnEntrar.textContent = "ENTRANDO...";
 
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        body: JSON.stringify({
-          usuario: usuario.value,
-          senha: senha.value
-        })
-      })
-      .then(r => r.json())
-.then(data => {
-      function login() {
-  const usuario = document.getElementById("usuario").value;
-  const senha = document.getElementById("senha").value;
-  const mensagem = document.getElementById("mensagem");
+      try {
 
-  if (usuario === "" || senha === "") {
-    mensagem.textContent = "Preencha usuário e senha.";
-    return;
-  }
+        const response = await fetch("/login", {
+          method: "POST",
 
-  if (usuario === "admin" && senha === "1234") {
-    mensagem.textContent = "Login realizado com sucesso!";
-  } else {
-    mensagem.textContent = "Usuário ou senha incorretos.";
-  }
-}
-  
-<script>
-function login() {
-  const usuario = document.getElementById("usuario").value;
-  const senha = document.getElementById("senha").value;
-  const mensagem = document.getElementById("mensagem");
+          headers: {
+            "Content-Type": "application/json"
+          },
 
-  // Validação de campos vazios
-  if (usuario === "" || senha === "") {
-    mensagem.textContent = "Preencha usuário e senha.";
-    return;
-  }
+          body: JSON.stringify({
+            usuario: usuario,
+            senha: senha
+          })
+        });
 
-  // Requisição para o servidor
-  fetch("/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json" // Vírgula corrigida aqui
-    },
-    body: JSON.stringify({
-      usuario.value, 
-      senha: senha.value                
-  })
-  })
-  .then(=> r.json()) {
-    // Verifica se a resposta HTTP foi bem-sucedida (status 200-299)
-    if (!response.ok) {
-      throw new Error("Erro na requisição de login");
+        const data = await response.json();
+
+        // Login inválido
+        if (!response.ok) {
+          mensagem.textContent = data.erro || "Usuário ou senha inválidos.";
+          mensagem.className = "erro";
+
+          btnEntrar.disabled = false;
+          btnEntrar.textContent = "ENTRAR";
+
+          return;
+        }
+
+        // Login realizado
+        mensagem.textContent = "Login realizado com sucesso!";
+        mensagem.className = "sucesso";
+
+        // Redireciona de acordo com o tipo de usuário
+        if (data.tipo === "triagem") {
+
+          window.location.href = "triagem.html";
+
+        } else if (data.tipo === "medico") {
+
+          window.location.href = "medico.html";
+
+        } else if (data.tipo === "atendimento") {
+
+          window.location.href = "atendimento.html";
+
+        } else {
+
+          mensagem.textContent = "Tipo de usuário não encontrado.";
+          mensagem.className = "erro";
+
+          btnEntrar.disabled = false;
+          btnEntrar.textContent = "ENTRAR";
+        }
+
+      } catch (error) {
+
+        console.error("Erro no login:", error);
+
+        mensagem.textContent =
+          "Não foi possível conectar ao servidor.";
+
+        mensagem.className = "erro";
+
+        btnEntrar.disabled = false;
+        btnEntrar.textContent = "ENTRAR";
+      }
     }
-    return response.json();
-  })
-  .then(data => {
-    // Validação centralizada do tipo de usuário retornada pelo servidor
-    if (data.tipo === "triagem") {
-      window.location.href = "triagem.html";
-    } else if (data.tipo === "medico") {
-      window.location.href = "medico.html";
-    } else if (data.tipo === "atendimento") {
-      window.location.href = "atendimento.html";
-    } else {
-      mensagem.textContent = "Tipo de usuário não encontrado.";
-    }
-  })
-  .catch(error => {
-    console.error("Erro no processo de login:", error);
-    mensagem.textContent = "Usuário ou senha inválidos.";
-  });
-}
-</script>
+
+    // Permite apertar ENTER para fazer login
+    document.getElementById("senha").addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        login();
+      }
+
+    });
+
+    document.getElementById("usuario").addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        login();
+      }
+
+    });
+  </script>
 
 </body>
 
