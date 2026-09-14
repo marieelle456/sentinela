@@ -360,3 +360,58 @@ a:hover {
     display: none;
   }
 }
+/* =========================================
+   IMPRESSÃO SOMENTE DA CONSULTA
+   ========================================= */
+
+@media print {
+
+  /* Esconde tudo */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Mostra somente a consulta */
+  #areaConsulta,
+  #areaConsulta * {
+    visibility: visible;
+  }
+
+  /* Coloca a consulta no topo da folha */
+  #areaConsulta {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+
+    padding: 30px;
+
+    background: white;
+
+    color: #000;
+  }
+
+  /* Esconde os botões */
+  .botoesConsulta {
+    display: none !important;
+  }
+
+  /* Esconde campos que não precisam aparecer como caixas */
+  #areaConsulta input,
+  #areaConsulta select,
+  #areaConsulta textarea {
+
+    border: 1px solid #999;
+
+    background: white;
+
+    color: #000;
+  }
+
+  /* Remove fundo da página */
+  body {
+    background: white !important;
+  }
+
+}
