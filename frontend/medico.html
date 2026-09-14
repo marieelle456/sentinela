@@ -79,6 +79,21 @@
 
 <script>
 
+function baixarPDF() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  if (!paciente) {
+    alert("Selecione um paciente primeiro.");
+    return;
+  }
+
+  window.print();
+}
+
+
+  
 let triagensCarregadas = [];
 
 function carregar() {
