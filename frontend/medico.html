@@ -22,6 +22,11 @@
 
   <hr>
 
+<hr>
+
+<!-- ÁREA QUE SERÁ IMPRESSA -->
+<div id="areaConsulta">
+
   <h3>Consulta</h3>
 
   <input
@@ -36,11 +41,7 @@
   >
 
   <select id="medicacao">
-
-    <option value="">
-      Selecione a medicação
-    </option>
-
+    <option value="">Selecione a medicação</option>
   </select>
 
   <textarea
@@ -48,9 +49,24 @@
     placeholder="Observações"
   ></textarea>
 
+</div>
+
+<!-- BOTÕES NÃO SERÃO IMPRESSOS -->
+<div class="botoesConsulta">
+
   <button onclick="salvar()">
     💾 Salvar Consulta
   </button>
+
+  <button
+    onclick="baixarPDF()"
+    class="btn-pdf"
+  >
+    🖨️ Baixar PDF
+  </button>
+
+</div>
+
 
   <button
     onclick="window.print()"
