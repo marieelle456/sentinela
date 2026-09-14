@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Medicações - Hospital Sentinela</title>
+
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -10,50 +18,76 @@
 
   <h2>💊 Medicações Prescritas</h2>
 
-  <!-- IMPLEMENTADO: local onde a lista de medicações será exibida -->
   <div id="listaMedicacoes"></div>
 
 </div>
 
 <script>
 
-// IMPLEMENTADO: busca as consultas salvas e mostra as medicações
 function carregarMedicacoesPrescritas() {
+
   fetch("/medicacoes")
+
     .then(r => r.json())
+
     .then(data => {
-      const div = document.getElementById("listaMedicacoes");
+
+      const div =
+        document.getElementById("listaMedicacoes");
 
       div.innerHTML = "";
 
       if (data.length === 0) {
-        div.innerHTML = "<p>Nenhuma medicação prescrita.</p>";
+
+        div.innerHTML =
+          "<p>Nenhuma medicação prescrita.</p>";
+
         return;
+
       }
 
       data.forEach(c => {
+
         div.innerHTML += `
+
           <div class="card">
-            <h3>${c.paciente}</h3>
+
+            <h3>
+              👤 ${c.paciente}
+            </h3>
 
             <p>
-              <b>Medicação:</b>
+              <b>💊 Medicação:</b>
               ${c.medicacao}
             </p>
 
             <p>
-              <b>Diagnóstico:</b>
-              ${c.diagnostico}
+              <b>🩺 Diagnóstico:</b>
+              ${c.diagnostico || "Não informado"}
             </p>
 
             <p>
-              <b>Observações:</b>
+              <b>📝 Observações:</b>
               ${c.obs || "Nenhuma"}
             </p>
+
           </div>
+
         `;
+
       });
+
+    })
+
+    .catch(error => {
+
+      console.error(error);
+
+      document.getElementById("listaMedicacoes").innerHTML =
+        "<p>Erro ao carregar as medicações.</p>";
+
     });
+
 }
 
 carregarMedicacoesPrescritas();
@@ -61,4 +95,5 @@ carregarMedicacoesPrescritas();
 </script>
 
 </body>
+
 </html>
