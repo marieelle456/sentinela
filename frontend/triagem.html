@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<title>Triagem</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Triagem - Hospital Sentinela</title>
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
 <div class="container">
-<h2>🏥 Triagem Hospitalar</h2>
-<input id="nome" placeholder="Nome">
 
-<select id="sintoma">
+  <h2>🏥 Triagem Hospitalar</h2>
 
-<option value="">Selecione</option>
-<option value="dor_leve">Dor leve</option>
-<option value="resfriado">Resfriado</option>
-<option value="coriza">Coriza</option>
-<option value="tosse">Tosse</option>
-<option value="febre">Febre</option>
-<option value="vomito">Vômito</option>
-<option value="diarreia">Diarreia</option>
-<option value="falta_ar_moderada">Falta de ar moderada</option>
-<option value="falta_ar_grave">Falta de ar grave</option>
-<option value="infarto">Suspeita de infarto</option>
-<option value="avc">Suspeita de AVC</option>
-<option value="convulsao">Convulsão</option>
-<option value="hemorragia">Hemorragia</option>
+  <input
+    id="nome"
+    placeholder="Nome do paciente"
+  >
 
-</select>
+  <select id="sintoma">
 
-<input
-  id="temp"
-  type="number"
-  placeholder="Temperatura"
-/>
+    <option value="">Selecione o sintoma</option>
 
-<input
-  id="alergia"
-  placeholder="Alergias"
-/>
+    <option value="dor_leve">Dor leve</option>
+    <option value="resfriado">Resfriado</option>
+    <option value="coriza">Coriza</option>
+    <option value="tosse">Tosse</option>
+    <option value="febre">Febre</option>
+    <option value="vomito">Vômito</option>
+    <option value="diarreia">Diarreia</option>
+    <option value="falta_ar_moderada">Falta de ar moderada</option>
+    <option value="falta_ar_grave">Falta de ar grave</option>
+    <option value="infarto">Suspeita de infarto</option>
+    <option value="avc">Suspeita de AVC</option>
+    <option value="convulsao">Convulsão</option>
+    <option value="hemorragia">Hemorragia</option>
 
-<textarea
-  id="observacao"
-  placeholder="Observações"
-></textarea>
+  </select>
 
-<div id="resultado"></div>
+  <input
+    id="temp"
+    type="number"
+    step="0.1"
+    placeholder="Temperatura (°C)"
+  >
 
-<button onclick="salvar()">
-Salvar Triagem
-</button>
+  <input
+    id="alergia"
+    placeholder="Alergias"
+  >
+
+  <textarea
+    id="observacao"
+    placeholder="Observações"
+  ></textarea>
+
+  <div id="resultado"></div>
+
+  <button onclick="salvar()">
+    Salvar Triagem
+  </button>
 
 </div>
 
 <script>
 
-function classificarRisco(sintoma, temperatura){
+function classificarRisco(sintoma, temperatura) {
 
   const vermelhos = [
     "infarto",
@@ -88,7 +100,7 @@ function classificarRisco(sintoma, temperatura){
   return "verde";
 }
 
-function salvar(){
+function salvar() {
 
   const nome =
     document.getElementById("nome").value;
@@ -105,15 +117,25 @@ function salvar(){
   const observacao =
     document.getElementById("observacao").value;
 
+  if (!nome) {
+    alert("Informe o nome do paciente.");
+    return;
+  }
+
+  if (!sintoma) {
+    alert("Selecione um sintoma.");
+    return;
+  }
+
   const risco =
     classificarRisco(sintoma, temperatura);
 
-  fetch("http://localhost:3000/triagem", {
+  fetch("/triagem", {
 
-    method:"POST",
+    method: "POST",
 
-    headers:{
-      "Content-Type":"application/json"
+    headers: {
+      "Content-Type": "application/json"
     },
 
     body: JSON.stringify({
@@ -142,7 +164,15 @@ function salvar(){
       "Classificação: " +
       risco.toUpperCase();
 
-    alert("Triagem salva");
+    alert("Triagem salva com sucesso!");
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert("Erro ao salvar a triagem.");
 
   });
 
