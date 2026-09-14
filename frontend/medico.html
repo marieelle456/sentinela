@@ -1,7 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
 <head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Painel Médico - Hospital Sentinela</title>
+
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -16,20 +24,40 @@
 
   <h3>Consulta</h3>
 
-  <input id="paciente" placeholder="Paciente" readonly>
+  <input
+    id="paciente"
+    placeholder="Paciente"
+    readonly
+  >
 
-  <input id="diagnostico" placeholder="Diagnóstico">
+  <input
+    id="diagnostico"
+    placeholder="Diagnóstico"
+  >
 
   <select id="medicacao">
-    <option value="">Selecione a medicação</option>
+
+    <option value="">
+      Selecione a medicação
+    </option>
+
   </select>
 
-  <textarea id="obs" placeholder="Observações"></textarea>
+  <textarea
+    id="obs"
+    placeholder="Observações"
+  ></textarea>
 
-  <button onclick="salvar()">Salvar</button>
-  <button onclik="window.print()" style="margin-top: 1rem; padding:
-    10px 20px; front-weight: bold; cursor: pointer; border-radius: 8px;
-    border: none; background: wite; color: var(--primary-color;"> Baixar PDF</button>
+  <button onclick="salvar()">
+    💾 Salvar Consulta
+  </button>
+
+  <button
+    onclick="window.print()"
+    class="btn-pdf"
+  >
+    🖨️ Baixar PDF
+  </button>
 
 </div>
 
@@ -38,111 +66,206 @@
 let triagensCarregadas = [];
 
 function carregar() {
+
   fetch("/triagens")
+
     .then(r => r.json())
+
     .then(data => {
+
       triagensCarregadas = data;
 
-      const div = document.getElementById("triagens");
+      const div =
+        document.getElementById("triagens");
+
       div.innerHTML = "";
 
+      if (data.length === 0) {
+
+        div.innerHTML =
+          "<p>Nenhuma triagem aguardando atendimento.</p>";
+
+        return;
+      }
+
       data.forEach((t, index) => {
+
         div.innerHTML += `
+
           <div class="card">
-            <h3>${t.nome}</h3>
 
-            <p><b>Sintoma:</b> ${t.sintoma || "Não informado"}</p>
-
-            <p><b>Temperatura:</b> ${t.temperatura || "Não informada"}°C</p>
+            <h3>
+              👤 ${t.nome}
+            </h3>
 
             <p>
+              <b>Sintoma:</b>
+              ${t.sintoma || "Não informado"}
+            </p>
+
+            <p>
+              <b>Temperatura:</b>
+              ${t.temperatura || "Não informada"}°C
+            </p>
+
+            <p>
+              <b>Classificação:</b>
               <span class="${t.risco}">
                 ${t.risco}
               </span>
             </p>
 
-            <p><b>Alergia:</b> ${t.alergia || "Nenhuma"}</p>
+            <p>
+              <b>Alergia:</b>
+              ${t.alergia || "Nenhuma"}
+            </p>
 
-            <p><b>Observação:</b> ${t.observacao || "Nenhuma"}</p>
+            <p>
+              <b>Observação:</b>
+              ${t.observacao || "Nenhuma"}
+            </p>
 
             <button onclick="selecionar(${index})">
-              Atender
+              🩺 Atender Paciente
             </button>
+
           </div>
+
         `;
+
       });
+
     });
+
 }
 
 function selecionar(index) {
-  const t = triagensCarregadas[index];
 
-  document.getElementById("paciente").value = t.nome;
-  document.getElementById("obs").value = t.observacao || "";
+  const t =
+    triagensCarregadas[index];
+
+  document.getElementById("paciente").value =
+    t.nome;
+
+  document.getElementById("obs").value =
+    t.observacao || "";
 
   if (t.alergia && t.alergia !== "Nenhuma") {
-    alert("⚠️ Paciente possui alergia: " + t.alergia);
+
+    alert(
+      "⚠️ ATENÇÃO!\n\nPaciente possui alergia: " +
+      t.alergia
+    );
+
   }
+
 }
 
 function carregarMedicacoes() {
+
   fetch("/lista-medicacoes")
+
     .then(r => r.json())
+
     .then(data => {
-      const select = document.getElementById("medicacao");
+
+      const select =
+        document.getElementById("medicacao");
 
       select.innerHTML = `
-        <option value="">Selecione a medicação</option>
+        <option value="">
+          Selecione a medicação
+        </option>
       `;
 
       data.forEach(med => {
-        const option = document.createElement("option");
+
+        const option =
+          document.createElement("option");
+
         option.value = med;
+
         option.textContent = med;
+
         select.appendChild(option);
+
       });
+
     });
+
 }
 
 function salvar() {
-  const paciente = document.getElementById("paciente").value;
-  const diagnostico = document.getElementById("diagnostico").value;
-  const medicacao = document.getElementById("medicacao").value;
-  const obs = document.getElementById("obs").value;
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  const diagnostico =
+    document.getElementById("diagnostico").value;
+
+  const medicacao =
+    document.getElementById("medicacao").value;
+
+  const obs =
+    document.getElementById("obs").value;
 
   if (!paciente) {
-    alert("Selecione um paciente clicando em Atender.");
+
+    alert(
+      "Selecione um paciente clicando em Atender."
+    );
+
     return;
+
   }
 
   if (!medicacao) {
-    alert("Selecione uma medicação.");
+
+    alert(
+      "Selecione uma medicação."
+    );
+
     return;
+
   }
 
   fetch("/consulta", {
+
     method: "POST",
+
     headers: {
       "Content-Type": "application/json"
     },
+
     body: JSON.stringify({
+
       paciente,
       diagnostico,
       medicacao,
       obs
+
     })
+
   })
+
   .then(r => r.json())
+
   .then(() => {
-    alert("Consulta salva");
+
+    alert("Consulta salva com sucesso!");
 
     document.getElementById("diagnostico").value = "";
+
     document.getElementById("medicacao").value = "";
+
     document.getElementById("obs").value = "";
+
   });
+
 }
 
 carregar();
+
 carregarMedicacoes();
 
 </script>
