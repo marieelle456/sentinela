@@ -73,6 +73,8 @@
 </button>
 
 
+  
+
 </div>
 
 
@@ -83,6 +85,54 @@
     🖨️ Baixar PDF
   </button>
 
+<div id="areaAlta" style="display: none;">
+
+  <h3>🏠 Alta do Paciente</h3>
+
+  <p>
+    <b>Paciente:</b>
+    <span id="altaPaciente"></span>
+  </p>
+
+  <label>Condição da alta:</label>
+  <select id="condicaoAlta">
+    <option value="">Selecione</option>
+    <option value="Alta médica">Alta médica</option>
+    <option value="Alta com acompanhamento">Alta com acompanhamento</option>
+    <option value="Alta com retorno">Alta com retorno</option>
+  </select>
+
+  <label>Orientações:</label>
+  <textarea
+    id="orientacoesAlta"
+    placeholder="Digite as orientações para o paciente..."
+  ></textarea>
+
+  <label>Retorno:</label>
+  <input
+    type="text"
+    id="retornoAlta"
+    placeholder="Ex: Retornar em 7 dias"
+  >
+
+  <label>Observações da alta:</label>
+  <textarea
+    id="obsAlta"
+    placeholder="Observações..."
+  ></textarea>
+
+  <button onclick="confirmarAlta()" class="btn-alta">
+    ✅ Confirmar Alta
+  </button>
+
+  <button onclick="fecharAlta()">
+    ❌ Cancelar
+  </button>
+
+</div>
+
+
+  
 </div>
 
 <script>
