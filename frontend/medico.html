@@ -547,6 +547,141 @@ function confirmarInternacao() {
 
 }
 
+  function alta() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  if (!paciente) {
+
+    alert(
+      "Selecione um paciente primeiro clicando em Atender."
+    );
+
+    return;
+  }
+
+  // Mostra o nome do paciente na área de alta
+  document.getElementById("altaPaciente").textContent =
+    paciente;
+
+  // Mostra a área de alta
+  document.getElementById("areaAlta").style.display =
+    "block";
+
+  // Rola a tela até a área de alta
+  document.getElementById("areaAlta").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+
+function fecharAlta() {
+
+  document.getElementById("areaAlta").style.display =
+    "none";
+
+}
+
+
+function confirmarAlta() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  const condicao =
+    document.getElementById("condicaoAlta").value;
+
+  const orientacoes =
+    document.getElementById("orientacoesAlta").value;
+
+  const retorno =
+    document.getElementById("retornoAlta").value;
+
+  const observacoes =
+    document.getElementById("obsAlta").value;
+
+
+  if (!paciente) {
+
+    alert("Selecione um paciente primeiro.");
+
+    return;
+  }
+
+
+  if (!condicao) {
+
+    alert("Selecione a condição da alta.");
+
+    return;
+  }
+
+
+  if (!orientacoes) {
+
+    alert("Digite as orientações para o paciente.");
+
+    return;
+  }
+
+
+  fetch("/alta", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+      paciente: paciente,
+      condicao: condicao,
+      orientacoes: orientacoes,
+      retorno: retorno,
+      observacoes: observacoes
+
+    })
+
+  })
+
+  .then(r => r.json())
+
+  .then(data => {
+
+    alert("Alta realizada com sucesso!");
+
+    // Limpa os campos
+    document.getElementById("condicaoAlta").value = "";
+    document.getElementById("orientacoesAlta").value = "";
+    document.getElementById("retornoAlta").value = "";
+    document.getElementById("obsAlta").value = "";
+
+    // Esconde a área
+    document.getElementById("areaAlta").style.display =
+      "none";
+
+    // Limpa o paciente selecionado
+    document.getElementById("paciente").value = "";
+
+    // Atualiza a lista de triagens
+    carregar();
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert("Erro ao realizar a alta.");
+
+  });
+
+}
+
+
 
 </script>
 
