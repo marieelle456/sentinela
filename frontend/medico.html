@@ -50,8 +50,6 @@
   ></textarea>
 
 </div>
-
-<!-- BOTÕES NÃO SERÃO IMPRESSOS -->
 <div class="botoesConsulta">
 
   <button onclick="salvar()">
@@ -66,24 +64,81 @@
   </button>
 
   <button
-  onclick="alta()"
-  class="btn-alta"
->
-  🏠 Dar Alta
-</button>
+    onclick="alta()"
+    class="btn-alta"
+  >
+    🏠 Dar Alta
+  </button>
 
-
-  
+  <button
+    onclick="internar()"
+    class="btn-internacao"
+  >
+    🏥 Internar Paciente
+  </button>
 
 </div>
 
+<div id="areaInternacao" style="display: none;">
+
+  <h3>🏥 Internação do Paciente</h3>
+
+  <p>
+    <b>Paciente:</b>
+    <span id="internacaoPaciente"></span>
+  </p>
+
+  <label>Setor:</label>
+
+  <select id="setorInternacao">
+    <option value="">Selecione o setor</option>
+    <option value="Enfermaria">Enfermaria</option>
+    <option value="UTI">UTI</option>
+    <option value="Observação">Observação</option>
+    <option value="Pediatria">Pediatria</option>
+    <option value="Clínica Médica">Clínica Médica</option>
+    <option value="Cirurgia">Cirurgia</option>
+  </select>
+
+
+  <label>Quarto/Leito:</label>
+
+  <input
+    type="text"
+    id="quartoLeito"
+    placeholder="Ex: Quarto 12 - Leito 2"
+  >
+
+
+  <label>Motivo da internação:</label>
+
+  <textarea
+    id="motivoInternacao"
+    placeholder="Informe o motivo da internação..."
+  ></textarea>
+
+
+  <label>Observações:</label>
+
+  <textarea
+    id="obsInternacao"
+    placeholder="Observações da internação..."
+  ></textarea>
+
 
   <button
-    onclick="window.print()"
-    class="btn-pdf"
+    onclick="confirmarInternacao()"
+    class="btn-internacao"
   >
-    🖨️ Baixar PDF
+    ✅ Confirmar Internação
   </button>
+
+  <button onclick="fecharInternacao()">
+    ❌ Cancelar
+  </button>
+
+</div>
+  
 
 <div id="areaAlta" style="display: none;">
 
