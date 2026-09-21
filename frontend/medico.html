@@ -412,7 +412,145 @@ carregar();
 
 carregarMedicacoes();
 
+  function internar() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  if (!paciente) {
+
+    alert(
+      "Selecione um paciente primeiro clicando em Atender."
+    );
+
+    return;
+  }
+
+  document.getElementById("internacaoPaciente").textContent =
+    paciente;
+
+  document.getElementById("areaInternacao").style.display =
+    "block";
+
+  document.getElementById("areaInternacao").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+
+function fecharInternacao() {
+
+  document.getElementById("areaInternacao").style.display =
+    "none";
+
+}
+
+
+function confirmarInternacao() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+  const setor =
+    document.getElementById("setorInternacao").value;
+
+  const quarto =
+    document.getElementById("quartoLeito").value;
+
+  const motivo =
+    document.getElementById("motivoInternacao").value;
+
+  const observacoes =
+    document.getElementById("obsInternacao").value;
+
+
+  if (!paciente) {
+
+    alert("Selecione um paciente.");
+
+    return;
+  }
+
+
+  if (!setor) {
+
+    alert("Selecione o setor da internação.");
+
+    return;
+  }
+
+
+  if (!quarto) {
+
+    alert("Informe o quarto ou leito.");
+
+    return;
+  }
+
+
+  if (!motivo) {
+
+    alert("Informe o motivo da internação.");
+
+    return;
+  }
+
+
+  fetch("/internacao", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+      paciente: paciente,
+      setor: setor,
+      quarto: quarto,
+      motivo: motivo,
+      observacoes: observacoes
+
+    })
+
+  })
+
+  .then(r => r.json())
+
+  .then(data => {
+
+    alert("Paciente internado com sucesso!");
+
+    document.getElementById("setorInternacao").value = "";
+    document.getElementById("quartoLeito").value = "";
+    document.getElementById("motivoInternacao").value = "";
+    document.getElementById("obsInternacao").value = "";
+
+    document.getElementById("areaInternacao").style.display =
+      "none";
+
+    document.getElementById("paciente").value = "";
+
+    carregar();
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert("Erro ao realizar a internação.");
+
+  });
+
+}
+
+
 </script>
+
+  
 
 </body>
 </html>
