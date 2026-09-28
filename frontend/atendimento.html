@@ -582,23 +582,252 @@
             }
 
         }
+/* =========================================================
+   BOTÕES DO HOSPITAL SENTINELA
+   ========================================================= */
 
-┌────────────────────────┐
-│ 💾  SALVAR CONSULTA    │
-└────────────────────────┘
+/* Todos os botões da área do sistema */
+button {
+    min-height: 50px;
 
-┌────────────────────────┐
-│ 🖨️  BAIXAR PDF         │
-└────────────────────────┘
+    padding: 12px 24px;
 
-┌────────────────────────┐
-│ 🏠  DAR ALTA           │
-└────────────────────────┘
+    border: none;
 
-┌────────────────────────┐
-│ 🏥  INTERNAR PACIENTE  │
-└────────────────────────┘
+    border-radius: 12px;
 
+    background: linear-gradient(
+        135deg,
+        #062b55,
+        #0b4f91,
+        #2563eb
+    );
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px rgba(15, 76, 129, 0.25);
+
+    transition: all 0.2s ease;
+}
+
+
+/* Efeito quando passa o mouse */
+button:hover {
+
+    transform: translateY(-2px);
+
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1464b5,
+        #3b82f6
+    );
+
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.30);
+}
+
+
+/* Efeito ao clicar */
+button:active {
+
+    transform: translateY(1px);
+
+    box-shadow:
+        0 3px 8px rgba(15, 76, 129, 0.25);
+}
+
+
+/* =========================================================
+   BOTÃO "ATENDER PACIENTE"
+   ========================================================= */
+
+button[onclick*="atender"],
+button[onclick*="Atender"] {
+
+    min-width: 220px;
+
+    height: 52px;
+
+    font-size: 17px;
+
+    margin-top: 12px;
+
+}
+
+
+/* =========================================================
+   BOTÕES DA CONSULTA
+   ========================================================= */
+
+.botoesConsulta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.botoesConsulta button {
+
+    min-width: 180px;
+
+    height: 52px;
+
+    padding: 12px 20px;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   BOTÃO SALVAR CONSULTA
+   ========================================================= */
+
+.botoesConsulta button:first-child {
+
+    background: linear-gradient(
+        135deg,
+        #062b55,
+        #0b4f91,
+        #2563eb
+    );
+}
+
+
+/* =========================================================
+   BOTÃO BAIXAR PDF
+   ========================================================= */
+
+.botoesConsulta .btn-pdf {
+
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1976d2,
+        #3b82f6
+    );
+
+    color: white;
+
+    border: none;
+}
+
+
+/* =========================================================
+   BOTÃO DAR ALTA
+   ========================================================= */
+
+.botoesConsulta button[onclick*="alta"] {
+
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1464b5,
+        #2563eb
+    );
+}
+
+
+/* =========================================================
+   BOTÃO INTERNAR
+   ========================================================= */
+
+.botoesConsulta button[onclick*="internar"] {
+
+    background: linear-gradient(
+        135deg,
+        #061f3d,
+        #0b4f91,
+        #3b82f6
+    );
+}
+
+
+/* =========================================================
+   CAMPOS DA CONSULTA
+   ========================================================= */
+
+#areaConsulta input,
+#areaConsulta select,
+#areaConsulta textarea {
+
+    min-height: 50px;
+
+    padding: 12px 14px;
+
+    border: 2px solid #bfdbfe;
+
+    border-radius: 10px;
+
+    background: #f8fbff;
+
+    color: #173b5e;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+#areaConsulta input:focus,
+#areaConsulta select:focus,
+#areaConsulta textarea:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+
+/* =========================================================
+   TÍTULO CONSULTA
+   ========================================================= */
+
+#areaConsulta h2,
+#areaConsulta h3 {
+
+    color: #082f5f;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .botoesConsulta {
+
+        flex-direction: column;
+
+    }
+
+
+    .botoesConsulta button {
+
+        width: 100%;
+
+        min-width: 100%;
+
+    }
+
+}
         
     </style>
 
