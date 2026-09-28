@@ -2,60 +2,656 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hospital Sentinela - Atendimento</title>
 
-    <!-- CONEXÃO COM O CSS -->
-    <link rel="stylesheet" href="./style.css">
+
+    <style>
+
+        /* =====================================================
+           CONFIGURAÇÃO GERAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+            color: #16324f;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 10%,
+                    #93c5fd 0%,
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 15%,
+                    #60a5fa 0%,
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 80% 90%,
+                    #bfdbfe 0%,
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #dbeafe,
+                    #eff6ff,
+                    #bfdbfe
+                );
+
+        }
+
+
+        /* =====================================================
+           CONTAINER PRINCIPAL
+        ===================================================== */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-radius: 28px;
+
+            border: 1px solid #bfdbfe;
+
+            box-shadow:
+
+                0 25px 60px rgba(15, 53, 88, 0.20),
+
+                0 0 50px rgba(59, 130, 246, 0.18);
+
+        }
+
+
+        /* =====================================================
+           CABEÇALHO
+        ===================================================== */
+
+        .cabecalho {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .logo {
+
+            width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #06244b,
+                    #0b4f91,
+                    #3b82f6
+                );
+
+            color: white;
+
+            font-size: 38px;
+
+            font-weight: bold;
+
+            box-shadow:
+
+                0 10px 25px rgba(37, 99, 235, 0.35);
+
+        }
+
+
+        .cabecalho h1 {
+
+            font-size: 32px;
+
+            color: #062d57;
+
+        }
+
+
+        .cabecalho p {
+
+            margin-top: 5px;
+
+            color: #64809b;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           LINHA
+        ===================================================== */
+
+        hr {
+
+            border: none;
+
+            height: 2px;
+
+            margin: 25px 0 35px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #93c5fd,
+                    #2563eb,
+                    #93c5fd,
+                    transparent
+                );
+
+        }
+
+
+        /* =====================================================
+           TÍTULO ATENDIMENTO
+        ===================================================== */
+
+        .titulo {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .titulo h2 {
+
+            font-size: 32px;
+
+            color: #082f5f;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .titulo p {
+
+            color: #66819d;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           SEÇÕES DO ATENDIMENTO
+        ===================================================== */
+
+        .secao {
+
+            margin-bottom: 25px;
+
+            padding: 28px;
+
+            border-radius: 20px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #f8fbff,
+                    #eef6ff
+                );
+
+            border: 1px solid #bfdbfe;
+
+            box-shadow:
+
+                0 8px 25px rgba(15, 53, 88, 0.08);
+
+        }
+
+
+        .secao h3 {
+
+            color: #0a3d73;
+
+            font-size: 21px;
+
+            margin-bottom: 22px;
+
+            padding-left: 14px;
+
+            border-left: 5px solid #2563eb;
+
+        }
+
+
+        /* =====================================================
+           CAMPOS
+        ===================================================== */
+
+        .linha {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .campo {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .campo label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #244d73;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        .campo input,
+        .campo select {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border: 2px solid #c5dcf5;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #173b5e;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.25s;
+
+        }
+
+
+        .campo input::placeholder {
+
+            color: #8ba2b8;
+
+        }
+
+
+        .campo input:focus,
+        .campo select:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+
+                0 0 0 4px rgba(37, 99, 235, 0.12);
+
+        }
+
+
+        /* =====================================================
+           FOTO
+        ===================================================== */
+
+        .foto-box {
+
+            padding: 25px;
+
+            border: 2px dashed #8bbcf0;
+
+            border-radius: 18px;
+
+            background: #f8fbff;
+
+            text-align: center;
+
+        }
+
+
+        .camera {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .foto-box h4 {
+
+            color: #0b427b;
+
+            font-size: 18px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .foto-box p {
+
+            color: #7189a0;
+
+            font-size: 14px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .foto-box input[type="file"] {
+
+            width: auto;
+
+            border: none;
+
+            background: transparent;
+
+            height: auto;
+
+        }
+
+
+        /* =====================================================
+           BOTÃO PRINCIPAL
+        ===================================================== */
+
+        .btn-cadastrar {
+
+            width: 100%;
+
+            height: 62px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #062653,
+                    #0b4f91,
+                    #1976d2,
+                    #3b82f6
+                );
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+
+                0 7px 0 #041d3d,
+
+                0 15px 30px rgba(15, 82, 150, 0.30);
+
+            transition: 0.2s;
+
+        }
+
+
+        .btn-cadastrar:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+
+                0 10px 0 #041d3d,
+
+                0 20px 35px rgba(15, 82, 150, 0.35);
+
+        }
+
+
+        .btn-cadastrar:active {
+
+            transform: translateY(4px);
+
+            box-shadow:
+
+                0 3px 0 #041d3d;
+
+        }
+
+
+        /* =====================================================
+           BOTÕES GERAIS
+        ===================================================== */
+
+        button {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVO
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 15px;
+
+            }
+
+
+            .container {
+
+                padding: 22px;
+
+                border-radius: 20px;
+
+            }
+
+
+            .cabecalho {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+
+            .cabecalho h1 {
+
+                font-size: 26px;
+
+            }
+
+
+            .linha {
+
+                grid-template-columns: 1fr;
+
+                gap: 0;
+
+            }
+
+
+            .secao {
+
+                padding: 20px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           IMPRESSÃO
+        ===================================================== */
+
+        @media print {
+
+            body {
+
+                background: white;
+
+                padding: 0;
+
+            }
+
+
+            .container {
+
+                width: 100%;
+
+                max-width: none;
+
+                box-shadow: none;
+
+                border: none;
+
+            }
+
+
+            .btn-cadastrar {
+
+                display: none;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <main class="container atendimento">
 
-        <!-- CABEÇALHO -->
-        <header class="cabecalho-atendimento">
+    <div class="container">
 
-            <div class="icone-hospital">
+
+        <!-- ================================================
+             CABEÇALHO
+        ================================================= -->
+
+        <div class="cabecalho">
+
+            <div class="logo">
                 +
             </div>
 
             <div>
-                <h1>Hospital Sentinela</h1>
-                <p>Cadastro de Atendimento</p>
+
+                <h1>
+                    Hospital Sentinela
+                </h1>
+
+                <p>
+                    Cadastro de Atendimento
+                </p>
+
             </div>
 
-        </header>
+        </div>
 
 
         <hr>
 
 
-        <!-- TÍTULO -->
-        <section class="titulo-atendimento">
+        <!-- ================================================
+             TÍTULO
+        ================================================= -->
 
-            <h2>Atendimento</h2>
+        <div class="titulo">
+
+            <h2>
+                Atendimento
+            </h2>
 
             <p>
                 Preencha os dados do paciente para iniciar o atendimento.
             </p>
 
-        </section>
+        </div>
 
 
-        <!-- =========================================
+        <!-- ================================================
              DADOS DO PACIENTE
-        ========================================== -->
+        ================================================= -->
 
-        <section class="secao-formulario">
+        <div class="secao">
 
-            <h3>Dados do paciente</h3>
+            <h3>
+                Dados do paciente
+            </h3>
 
 
-            <div class="linha-campos">
+            <div class="linha">
+
 
                 <div class="campo">
 
@@ -86,10 +682,12 @@
 
                 </div>
 
+
             </div>
 
 
-            <div class="linha-campos">
+            <div class="linha">
+
 
                 <div class="campo">
 
@@ -117,25 +715,22 @@
                             Selecione
                         </option>
 
-                        <option value="Feminino">
+                        <option>
                             Feminino
                         </option>
 
-                        <option value="Masculino">
+                        <option>
                             Masculino
                         </option>
 
-                        <option value="Outro">
+                        <option>
                             Outro
-                        </option>
-
-                        <option value="Nao informado">
-                            Prefiro não informar
                         </option>
 
                     </select>
 
                 </div>
+
 
             </div>
 
@@ -155,7 +750,8 @@
             </div>
 
 
-            <div class="linha-campos">
+            <div class="linha">
+
 
                 <div class="campo">
 
@@ -165,28 +761,24 @@
 
                     <select id="estadoCivil">
 
-                        <option value="">
+                        <option>
                             Selecione
                         </option>
 
-                        <option value="Solteiro">
+                        <option>
                             Solteiro(a)
                         </option>
 
-                        <option value="Casado">
+                        <option>
                             Casado(a)
                         </option>
 
-                        <option value="Divorciado">
+                        <option>
                             Divorciado(a)
                         </option>
 
-                        <option value="Viuvo">
+                        <option>
                             Viúvo(a)
-                        </option>
-
-                        <option value="Uniao estavel">
-                            União estável
                         </option>
 
                     </select>
@@ -207,6 +799,7 @@
                     >
 
                 </div>
+
 
             </div>
 
@@ -243,28 +836,30 @@
 
             <div class="campo">
 
-                <label for="contatoEmergencia">
+                <label for="contato">
                     Contato de emergência
                 </label>
 
                 <input
                     type="text"
-                    id="contatoEmergencia"
+                    id="contato"
                     placeholder="Nome e telefone do contato"
                 >
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- =========================================
+        <!-- ================================================
              TIPO DE ATENDIMENTO
-        ========================================== -->
+        ================================================= -->
 
-        <section class="secao-formulario">
+        <div class="secao">
 
-            <h3>Tipo de atendimento</h3>
+            <h3>
+                Tipo de atendimento
+            </h3>
 
 
             <div class="campo">
@@ -291,37 +886,33 @@
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- =========================================
+        <!-- ================================================
              FOTO DO PACIENTE
-        ========================================== -->
+        ================================================= -->
 
-        <section class="secao-formulario">
+        <div class="secao">
 
-            <h3>Foto do paciente</h3>
+            <h3>
+                Foto do paciente
+            </h3>
 
 
-            <div class="upload-foto">
+            <div class="foto-box">
 
-                <div class="icone-camera">
+                <div class="camera">
                     📷
                 </div>
 
+                <h4>
+                    Adicionar foto
+                </h4>
 
-                <div class="texto-foto">
-
-                    <strong>
-                        Adicionar foto
-                    </strong>
-
-                    <p>
-                        Selecione uma foto para identificação do paciente.
-                    </p>
-
-                </div>
-
+                <p>
+                    Selecione uma foto para identificação do paciente.
+                </p>
 
                 <input
                     type="file"
@@ -331,37 +922,40 @@
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- =========================================
+        <!-- ================================================
              BOTÃO
-        ========================================== -->
+        ================================================= -->
 
         <button
-            type="button"
             class="btn-cadastrar"
             onclick="cadastrar()"
         >
+
             Cadastrar paciente
+
         </button>
 
-    </main>
+
+    </div>
 
 
-    <!-- =========================================
+
+    <!-- ================================================
          JAVASCRIPT
-    ========================================== -->
+    ================================================= -->
 
     <script>
 
         function cadastrar() {
 
             const nome =
-                document.getElementById("nome").value.trim();
+                document.getElementById("nome").value;
 
             const cpf =
-                document.getElementById("cpf").value.trim();
+                document.getElementById("cpf").value;
 
             const tipo =
                 document.getElementById("tipo").value;
@@ -372,22 +966,25 @@
                 alert("Digite o nome do paciente.");
 
                 return;
+
             }
 
 
             if (!cpf) {
 
-                alert("Digite o CPF/RG do paciente.");
+                alert("Digite o CPF/RG.");
 
                 return;
+
             }
 
 
             if (!tipo) {
 
-                alert("Selecione o tipo de atendimento.");
+                alert("Selecione a forma de atendimento.");
 
                 return;
+
             }
 
 
@@ -396,7 +993,10 @@
                 method: "POST",
 
                 headers: {
-                    "Content-Type": "application/json"
+
+                    "Content-Type":
+                    "application/json"
+
                 },
 
                 body: JSON.stringify({
@@ -411,19 +1011,7 @@
 
             })
 
-            .then(response => {
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "Erro ao cadastrar paciente"
-                    );
-
-                }
-
-                return response.json();
-
-            })
+            .then(response => response.json())
 
             .then(data => {
 
@@ -439,7 +1027,7 @@
                 console.error(error);
 
                 alert(
-                    "Não foi possível enviar o paciente para a triagem."
+                    "Paciente cadastrado, mas não foi possível conectar ao servidor."
                 );
 
             });
@@ -447,6 +1035,7 @@
         }
 
     </script>
+
 
 </body>
 
