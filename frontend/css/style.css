@@ -1,23 +1,89 @@
 /* =========================================================
-   BOTÕES DO HOSPITAL SENTINELA
+   HOSPITAL SENTINELA
+   FUNDO AZUL COM ESFUMADO
    ========================================================= */
 
-/* Todos os botões da área do sistema */
-button {
-    min-height: 50px;
+body {
+    margin: 0;
+    min-height: 100vh;
 
-    padding: 12px 24px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 5% 10%,
+            rgba(96, 165, 250, 0.65),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 95% 15%,
+            rgba(37, 99, 235, 0.45),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 15% 90%,
+            rgba(147, 197, 253, 0.55),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(59, 130, 246, 0.45),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #eff6ff,
+            #bfdbfe
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
+
+.container {
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid rgba(147, 197, 253, 0.8);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 54, 92, 0.18),
+        0 0 40px rgba(59, 130, 246, 0.15);
+
+}
+
+
+/* =========================================================
+   BOTÕES GRANDES AZUL ESCURO
+   ========================================================= */
+
+button {
+
+    min-height: 52px;
+
+    padding: 13px 25px;
 
     border: none;
 
     border-radius: 12px;
 
-    background: linear-gradient(
-        135deg,
-        #062b55,
-        #0b4f91,
-        #2563eb
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #062b55,
+            #0b3d73
+        );
 
     color: white;
 
@@ -30,53 +96,71 @@ button {
     cursor: pointer;
 
     box-shadow:
-        0 5px 12px rgba(15, 76, 129, 0.25);
+        0 6px 15px rgba(6, 43, 85, 0.30);
 
-    transition: all 0.2s ease;
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+
 }
 
 
-/* Efeito quando passa o mouse */
+/* =========================================================
+   MOUSE EM CIMA
+   AZUL CLARO
+   ========================================================= */
+
 button:hover {
 
-    transform: translateY(-2px);
+    background:
+        linear-gradient(
+            135deg,
+            #60a5fa,
+            #3b82f6
+        );
 
-    background: linear-gradient(
-        135deg,
-        #0b3d73,
-        #1464b5,
-        #3b82f6
-    );
+    color: white;
+
+    transform: translateY(-3px);
 
     box-shadow:
-        0 8px 18px rgba(37, 99, 235, 0.30);
+        0 10px 22px rgba(37, 99, 235, 0.35);
+
 }
 
 
-/* Efeito ao clicar */
+/* =========================================================
+   CLIQUE
+   ========================================================= */
+
 button:active {
 
     transform: translateY(1px);
 
     box-shadow:
-        0 3px 8px rgba(15, 76, 129, 0.25);
+        0 4px 10px rgba(37, 99, 235, 0.25);
+
 }
 
 
 /* =========================================================
-   BOTÃO "ATENDER PACIENTE"
+   BOTÃO ATENDER PACIENTE
    ========================================================= */
 
 button[onclick*="atender"],
 button[onclick*="Atender"] {
 
-    min-width: 220px;
+    min-width: 210px;
 
     height: 52px;
 
-    font-size: 17px;
-
-    margin-top: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            #062b55,
+            #0b3d73
+        );
 
 }
 
@@ -94,83 +178,127 @@ button[onclick*="Atender"] {
     gap: 12px;
 
     margin-top: 15px;
+
 }
 
+
+/* TODOS OS BOTÕES DA CONSULTA */
 
 .botoesConsulta button {
 
-    min-width: 180px;
+    min-width: 190px;
 
-    height: 52px;
+    height: 55px;
 
-    padding: 12px 20px;
+    padding: 12px 22px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #062b55,
+            #0b3d73
+        );
+
+    color: white;
 
     font-size: 16px;
 
+    font-weight: bold;
+
 }
 
 
 /* =========================================================
-   BOTÃO SALVAR CONSULTA
+   MOUSE NOS BOTÕES DA CONSULTA
    ========================================================= */
 
-.botoesConsulta button:first-child {
+.botoesConsulta button:hover {
 
-    background: linear-gradient(
-        135deg,
-        #062b55,
-        #0b4f91,
-        #2563eb
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #60a5fa,
+            #3b82f6
+        );
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 22px rgba(37, 99, 235, 0.35);
+
 }
 
 
 /* =========================================================
-   BOTÃO BAIXAR PDF
+   BOTÃO PDF
    ========================================================= */
 
 .botoesConsulta .btn-pdf {
 
-    background: linear-gradient(
-        135deg,
-        #0b3d73,
-        #1976d2,
-        #3b82f6
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #062b55,
+            #0b3d73
+        ) !important;
 
-    color: white;
+    color: white !important;
 
-    border: none;
+    border: none !important;
+
+}
+
+
+/* PDF AO PASSAR MOUSE */
+
+.botoesConsulta .btn-pdf:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #60a5fa,
+            #3b82f6
+        ) !important;
+
 }
 
 
 /* =========================================================
-   BOTÃO DAR ALTA
+   ÁREA DA CONSULTA
    ========================================================= */
 
-.botoesConsulta button[onclick*="alta"] {
+#areaConsulta {
 
-    background: linear-gradient(
-        135deg,
-        #0b3d73,
-        #1464b5,
-        #2563eb
-    );
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239, 246, 255, 0.90),
+            rgba(255, 255, 255, 0.96)
+        );
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    border: 1px solid #bfdbfe;
+
+    box-shadow:
+        0 10px 30px rgba(15, 54, 92, 0.08);
+
 }
 
 
 /* =========================================================
-   BOTÃO INTERNAR
+   TÍTULO CONSULTA
    ========================================================= */
 
-.botoesConsulta button[onclick*="internar"] {
+#areaConsulta h2,
+#areaConsulta h3 {
 
-    background: linear-gradient(
-        135deg,
-        #061f3d,
-        #0b4f91,
-        #3b82f6
-    );
+    color: #082f5f;
+
 }
 
 
@@ -190,35 +318,30 @@ button[onclick*="Atender"] {
 
     border-radius: 10px;
 
-    background: #f8fbff;
+    background: white;
 
     color: #173b5e;
 
     font-size: 16px;
 
     outline: none;
+
+    transition: 0.25s;
+
 }
 
+
+/* CAMPOS AO CLICAR */
 
 #areaConsulta input:focus,
 #areaConsulta select:focus,
 #areaConsulta textarea:focus {
 
-    border-color: #2563eb;
+    border-color: #3b82f6;
 
     box-shadow:
-        0 0 0 4px rgba(37, 99, 235, 0.12);
-}
+        0 0 0 4px rgba(59, 130, 246, 0.12);
 
-
-/* =========================================================
-   TÍTULO CONSULTA
-   ========================================================= */
-
-#areaConsulta h2,
-#areaConsulta h3 {
-
-    color: #082f5f;
 }
 
 
