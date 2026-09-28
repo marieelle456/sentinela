@@ -1,0 +1,14 @@
+services:
+ 
+  app:
+    build: .
+    container_name: santinela
+    ports:
+      - "3010:3002"
+    volumes:
+      - dados_santinela:/app/backend/data
+ 
+volumes:
+ 
+  dados_santinela:
+
