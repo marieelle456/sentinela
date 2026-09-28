@@ -1,881 +1,224 @@
 /* =========================================================
-   HOSPITAL SENTINELA
-   TEMA AZUL ESCURO + AZUL CLARO
+   BOTÕES DO HOSPITAL SENTINELA
    ========================================================= */
 
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-/* =========================================================
-   BODY
-   ========================================================= */
-
-body {
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    min-height: 100vh;
-
-    color: #102a43;
-
-    background:
-
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(96, 165, 250, 0.55),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(37, 99, 235, 0.35),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 80% 90%,
-            rgba(59, 130, 246, 0.45),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            135deg,
-            #dbeafe,
-            #eff6ff,
-            #bfdbfe
-        );
-
-    background-attachment: fixed;
-
-    padding: 30px 0;
-}
-
-
-/* =========================================================
-   CONTAINER
-   ========================================================= */
-
-.container {
-
-    width: 92%;
-
-    max-width: 950px;
-
-    margin: 0 auto;
-
-    padding: 35px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background: rgba(255, 255, 255, 0.94);
-
-    border: 1px solid rgba(147, 197, 253, 0.8);
-
-    border-radius: 26px;
-
-    box-shadow:
-
-        0 25px 60px rgba(15, 42, 74, 0.20),
-
-        0 0 45px rgba(37, 99, 235, 0.15);
-
-    backdrop-filter: blur(15px);
-}
-
-
-/* =========================================================
-   ESFUMADO DO CONTAINER
-   ========================================================= */
-
-.container::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-
-    height: 350px;
-
-    top: -180px;
-
-    right: -120px;
-
-    border-radius: 50%;
-
-    background: #60a5fa;
-
-    filter: blur(100px);
-
-    opacity: 0.25;
-
-    pointer-events: none;
-}
-
-
-.container::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-
-    height: 300px;
-
-    bottom: -150px;
-
-    left: -130px;
-
-    border-radius: 50%;
-
-    background: #2563eb;
-
-    filter: blur(110px);
-
-    opacity: 0.16;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   CABEÇALHO
-   ========================================================= */
-
-.cabecalho-atendimento {
-
-    position: relative;
-
-    z-index: 5;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 18px;
-
-    padding: 5px;
-}
-
-
-/* =========================================================
-   ÍCONE DO HOSPITAL
-   ========================================================= */
-
-.icone-hospital {
-
-    width: 65px;
-
-    height: 65px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 18px;
-
-    color: white;
-
-    font-size: 38px;
-
-    font-weight: bold;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #061d38,
-            #0b3d73,
-            #2563eb
-        );
-
-    box-shadow:
-
-        0 10px 25px rgba(37, 99, 235, 0.35);
-}
-
-
-/* =========================================================
-   TÍTULO PRINCIPAL
-   ========================================================= */
-
-.cabecalho-atendimento h1 {
-
-    color: #082b52;
-
-    font-size: 32px;
-
-    margin: 0;
-
-    text-align: left;
-}
-
-
-.cabecalho-atendimento p {
-
-    margin-top: 5px;
-
-    color: #52749a;
-
-    font-size: 15px;
-}
-
-
-/* =========================================================
-   LINHA
-   ========================================================= */
-
-hr {
-
-    position: relative;
-
-    z-index: 5;
+/* Todos os botões da área do sistema */
+button {
+    min-height: 50px;
+
+    padding: 12px 24px;
 
     border: none;
 
-    height: 2px;
-
-    margin: 28px 0;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            #93c5fd,
-            #2563eb,
-            #93c5fd,
-            transparent
-        );
-}
-
-
-/* =========================================================
-   TÍTULO ATENDIMENTO
-   ========================================================= */
-
-.titulo-atendimento {
-
-    position: relative;
-
-    z-index: 5;
-
-    text-align: center;
-
-    margin-bottom: 25px;
-}
-
-
-.titulo-atendimento h2 {
-
-    color: #0b2e59;
-
-    font-size: 30px;
-
-    margin-bottom: 8px;
-}
-
-
-.titulo-atendimento p {
-
-    color: #6683a3;
-
-    font-size: 15px;
-}
-
-
-/* =========================================================
-   SEÇÕES
-   ========================================================= */
-
-.secao-formulario {
-
-    position: relative;
-
-    z-index: 5;
-
-    margin-top: 22px;
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            rgba(239, 246, 255, 0.95),
-            rgba(255, 255, 255, 0.98)
-        );
-
-    border: 1px solid #bfdbfe;
-
-    box-shadow:
-
-        0 8px 25px rgba(15, 42, 74, 0.08);
-}
-
-
-/* =========================================================
-   TÍTULO DAS SEÇÕES
-   ========================================================= */
-
-.secao-formulario h3 {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #0b3d73;
-
-    font-size: 20px;
-
-    margin-bottom: 20px;
-}
-
-
-.secao-formulario h3::before {
-
-    content: "";
-
-    display: block;
-
-    width: 5px;
-
-    height: 25px;
-
-    border-radius: 10px;
-
-    background:
-
-        linear-gradient(
-            #082b52,
-            #3b82f6
-        );
-}
-
-
-/* =========================================================
-   LINHA DE CAMPOS
-   ========================================================= */
-
-.linha-campos {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 20px;
-
-    margin-bottom: 5px;
-}
-
-
-/* =========================================================
-   CAMPO
-   ========================================================= */
-
-.campo {
-
-    display: flex;
-
-    flex-direction: column;
-
-    width: 100%;
-}
-
-
-.campo label {
-
-    margin-top: 10px;
-
-    margin-bottom: 7px;
-
-    color: #244b70;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   INPUTS
-   ========================================================= */
-
-.campo input,
-.campo select {
-
-    width: 100%;
-
-    height: 48px;
-
-    margin: 0;
-
-    padding: 0 15px;
-
-    border: 2px solid #bfdbfe;
-
     border-radius: 12px;
 
-    outline: none;
+    background: linear-gradient(
+        135deg,
+        #062b55,
+        #0b4f91,
+        #2563eb
+    );
 
-    background: #f8fbff;
-
-    color: #102a43;
+    color: white;
 
     font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 15px;
-
-    transition: 0.25s;
-}
-
-
-.campo input::placeholder {
-
-    color: #7893ad;
-}
-
-
-/* =========================================================
-   FOCO
-   ========================================================= */
-
-.campo input:focus,
-.campo select:focus {
-
-    border-color: #3b82f6;
-
-    background: white;
-
-    box-shadow:
-
-        0 0 0 4px rgba(59, 130, 246, 0.12),
-
-        0 5px 15px rgba(37, 99, 235, 0.10);
-}
-
-
-/* =========================================================
-   SELECT
-   ========================================================= */
-
-.campo select {
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   UPLOAD DE FOTO
-   ========================================================= */
-
-.upload-foto {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    width: 100%;
-
-    padding: 20px;
-
-    border: 2px dashed #93c5fd;
-
-    border-radius: 16px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #ffffff
-        );
-
-    transition: 0.25s;
-}
-
-
-.upload-foto:hover {
-
-    border-color: #2563eb;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #dbeafe,
-            #ffffff
-        );
-}
-
-
-/* =========================================================
-   ÍCONE DA FOTO
-   ========================================================= */
-
-.icone-camera {
-
-    width: 55px;
-
-    height: 55px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 15px;
-
-    background: #dbeafe;
-
-    font-size: 25px;
-
-    box-shadow:
-
-        0 5px 15px rgba(37, 99, 235, 0.12);
-}
-
-
-/* =========================================================
-   TEXTO DA FOTO
-   ========================================================= */
-
-.texto-foto {
-
-    flex: 1;
-}
-
-
-.texto-foto strong {
-
-    display: block;
-
-    color: #0b3d73;
 
     font-size: 16px;
 
-    margin-bottom: 5px;
-}
-
-
-.texto-foto p {
-
-    margin: 0;
-
-    color: #6b87a5;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   INPUT DE ARQUIVO
-   ========================================================= */
-
-.upload-foto input[type="file"] {
-
-    width: auto;
-
-    margin: 0;
-
-    padding: 8px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #1456a0;
-
-    box-shadow: none;
-}
-
-
-/* =========================================================
-   BOTÃO CADASTRAR
-   ========================================================= */
-
-.btn-cadastrar {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: 100%;
-
-    height: 55px;
-
-    margin-top: 28px;
-
-    border: none;
-
-    border-radius: 14px;
-
-    color: white;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #061d38,
-            #0b3d73,
-            #145da0,
-            #3b82f6
-        );
-
-    background-size: 250% 250%;
-
-    font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 
     box-shadow:
+        0 5px 12px rgba(15, 76, 129, 0.25);
 
-        0 6px 0 #061d38,
-
-        0 14px 25px rgba(20, 93, 160, 0.30);
-
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
 }
 
 
-.btn-cadastrar:hover {
+/* Efeito quando passa o mouse */
+button:hover {
 
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 
-    background-position: 100% 50%;
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1464b5,
+        #3b82f6
+    );
 
     box-shadow:
-
-        0 9px 0 #061d38,
-
-        0 18px 30px rgba(37, 99, 235, 0.35);
+        0 8px 18px rgba(37, 99, 235, 0.30);
 }
 
 
-.btn-cadastrar:active {
+/* Efeito ao clicar */
+button:active {
 
-    transform: translateY(3px);
+    transform: translateY(1px);
 
     box-shadow:
-
-        0 3px 0 #061d38,
-
-        0 7px 12px rgba(37, 99, 235, 0.25);
+        0 3px 8px rgba(15, 76, 129, 0.25);
 }
 
 
 /* =========================================================
-   CARDS
+   BOTÃO "ATENDER PACIENTE"
    ========================================================= */
 
-.card {
+button[onclick*="atender"],
+button[onclick*="Atender"] {
 
-    padding: 20px;
+    min-width: 220px;
 
-    margin: 18px 0;
+    height: 52px;
 
-    border-radius: 18px;
+    font-size: 17px;
 
-    background: rgba(255, 255, 255, 0.96);
+    margin-top: 12px;
 
-    border: 1px solid #bfdbfe;
-
-    box-shadow:
-
-        0 8px 20px rgba(15, 42, 74, 0.10);
-
-    transition: 0.25s;
-}
-
-
-.card:hover {
-
-    transform: translateY(-3px);
-
-    border-color: #93c5fd;
-
-    box-shadow:
-
-        0 12px 28px rgba(15, 42, 74, 0.15);
-}
-
-
-.card h3 {
-
-    color: #1456a0;
-
-    margin-top: 0;
-}
-
-
-.card p {
-
-    color: #315579;
-
-    line-height: 1.5;
 }
 
 
 /* =========================================================
-   TRIAGEM
+   BOTÕES DA CONSULTA
    ========================================================= */
 
-.verde,
-.amarelo,
-.vermelho {
+.botoesConsulta {
 
-    display: inline-block;
+    display: flex;
 
-    padding: 7px 14px;
+    flex-wrap: wrap;
 
-    border-radius: 20px;
+    gap: 12px;
 
-    font-size: 13px;
-
-    font-weight: bold;
-
-    text-transform: uppercase;
+    margin-top: 15px;
 }
 
 
-.verde {
+.botoesConsulta button {
 
-    background: #22c55e;
+    min-width: 180px;
+
+    height: 52px;
+
+    padding: 12px 20px;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   BOTÃO SALVAR CONSULTA
+   ========================================================= */
+
+.botoesConsulta button:first-child {
+
+    background: linear-gradient(
+        135deg,
+        #062b55,
+        #0b4f91,
+        #2563eb
+    );
+}
+
+
+/* =========================================================
+   BOTÃO BAIXAR PDF
+   ========================================================= */
+
+.botoesConsulta .btn-pdf {
+
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1976d2,
+        #3b82f6
+    );
 
     color: white;
 
-    box-shadow:
-
-        0 3px 10px rgba(34, 197, 94, 0.25);
-}
-
-
-.amarelo {
-
-    background: #facc15;
-
-    color: #4a3800;
-
-    box-shadow:
-
-        0 3px 10px rgba(250, 204, 21, 0.25);
-}
-
-
-.vermelho {
-
-    background: #ef4444;
-
-    color: white;
-
-    box-shadow:
-
-        0 3px 10px rgba(239, 68, 68, 0.25);
+    border: none;
 }
 
 
 /* =========================================================
-   RESULTADO
+   BOTÃO DAR ALTA
    ========================================================= */
 
-#resultado {
+.botoesConsulta button[onclick*="alta"] {
 
-    margin-top: 20px;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    text-align: center;
-
-    font-weight: bold;
-
-    background: #eff6ff;
-
-    border: 1px solid #bfdbfe;
-
-    color: #0b2e59;
+    background: linear-gradient(
+        135deg,
+        #0b3d73,
+        #1464b5,
+        #2563eb
+    );
 }
 
 
 /* =========================================================
-   LINKS
+   BOTÃO INTERNAR
    ========================================================= */
 
-a {
+.botoesConsulta button[onclick*="internar"] {
 
-    color: #1456a0;
-
-    font-weight: bold;
-
-    text-decoration: none;
-
-    transition: 0.2s;
-}
-
-
-a:hover {
-
-    color: #2563eb;
+    background: linear-gradient(
+        135deg,
+        #061f3d,
+        #0b4f91,
+        #3b82f6
+    );
 }
 
 
 /* =========================================================
-   BOTÃO PDF
+   CAMPOS DA CONSULTA
    ========================================================= */
 
-.btn-pdf {
+#areaConsulta input,
+#areaConsulta select,
+#areaConsulta textarea {
 
-    background: white;
+    min-height: 50px;
 
-    color: #1456a0;
+    padding: 12px 14px;
 
-    border: 2px solid #93c5fd;
+    border: 2px solid #bfdbfe;
 
-    box-shadow: none;
+    border-radius: 10px;
+
+    background: #f8fbff;
+
+    color: #173b5e;
+
+    font-size: 16px;
+
+    outline: none;
 }
 
 
-.btn-pdf:hover {
+#areaConsulta input:focus,
+#areaConsulta select:focus,
+#areaConsulta textarea:focus {
 
-    background: #eff6ff;
-
-    color: #0b2e59;
-
-    border-color: #3b82f6;
+    border-color: #2563eb;
 
     box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.12);
+}
 
-        0 5px 15px rgba(37, 99, 235, 0.15);
+
+/* =========================================================
+   TÍTULO CONSULTA
+   ========================================================= */
+
+#areaConsulta h2,
+#areaConsulta h3 {
+
+    color: #082f5f;
 }
 
 
@@ -885,185 +228,19 @@ a:hover {
 
 @media (max-width: 700px) {
 
-    body {
-
-        padding: 15px 0;
-    }
-
-
-    .container {
-
-        width: 94%;
-
-        padding: 20px;
-
-        border-radius: 20px;
-    }
-
-
-    .linha-campos {
-
-        grid-template-columns: 1fr;
-
-        gap: 0;
-    }
-
-
-    .cabecalho-atendimento {
-
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-
-    .cabecalho-atendimento h1 {
-
-        font-size: 25px;
-
-        text-align: center;
-    }
-
-
-    .cabecalho-atendimento p {
-
-        text-align: center;
-    }
-
-
-    .titulo-atendimento h2 {
-
-        font-size: 25px;
-    }
-
-
-    .secao-formulario {
-
-        padding: 18px;
-    }
-
-
-    .upload-foto {
-
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-
-    .texto-foto {
-
-        width: 100%;
-    }
-
-
-    .upload-foto input[type="file"] {
-
-        width: 100%;
-    }
-
-}
-
-
-/* =========================================================
-   IMPRESSÃO
-   ========================================================= */
-
-@media print {
-
-    body {
-
-        padding: 0;
-
-        background: white !important;
-    }
-
-
-    .container {
-
-        width: 100%;
-
-        max-width: none;
-
-        margin: 0;
-
-        padding: 20px;
-
-        border: none;
-
-        box-shadow: none;
-
-        background: white;
-    }
-
-
-    .container::before,
-    .container::after {
-
-        display: none;
-    }
-
-
-    button {
-
-        display: none !important;
-    }
-
-}
-
-
-/* =========================================================
-   IMPRESSÃO DA CONSULTA
-   ========================================================= */
-
-@media print {
-
-    body * {
-
-        visibility: hidden;
-    }
-
-
-    #areaConsulta,
-    #areaConsulta * {
-
-        visibility: visible;
-    }
-
-
-    #areaConsulta {
-
-        position: absolute;
-
-        top: 0;
-
-        left: 0;
-
-        width: 100%;
-
-        padding: 30px;
-
-        background: white;
-
-        color: black;
-    }
-
-
     .botoesConsulta {
 
-        display: none !important;
+        flex-direction: column;
+
     }
 
 
-    #areaConsulta input,
-    #areaConsulta select,
-    #areaConsulta textarea {
+    .botoesConsulta button {
 
-        border: 1px solid #999;
+        width: 100%;
 
-        background: white;
+        min-width: 100%;
 
-        color: black;
     }
 
 }
