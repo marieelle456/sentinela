@@ -3,18 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hospital Sentinela - Atendimento</title>
 
+    <!-- CONEXÃO COM O CSS -->
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <div class="container atendimento">
+    <main class="container atendimento">
 
-        <div class="cabecalho-atendimento">
+        <!-- CABEÇALHO -->
+        <header class="cabecalho-atendimento">
 
             <div class="icone-hospital">
                 +
@@ -25,12 +28,14 @@
                 <p>Cadastro de Atendimento</p>
             </div>
 
-        </div>
+        </header>
+
 
         <hr>
 
 
-        <div class="titulo-atendimento">
+        <!-- TÍTULO -->
+        <section class="titulo-atendimento">
 
             <h2>Atendimento</h2>
 
@@ -38,12 +43,14 @@
                 Preencha os dados do paciente para iniciar o atendimento.
             </p>
 
-        </div>
+        </section>
 
 
-        <!-- DADOS DO PACIENTE -->
+        <!-- =========================================
+             DADOS DO PACIENTE
+        ========================================== -->
 
-        <div class="secao-formulario">
+        <section class="secao-formulario">
 
             <h3>Dados do paciente</h3>
 
@@ -110,16 +117,20 @@
                             Selecione
                         </option>
 
-                        <option>
+                        <option value="Feminino">
                             Feminino
                         </option>
 
-                        <option>
+                        <option value="Masculino">
                             Masculino
                         </option>
 
-                        <option>
+                        <option value="Outro">
                             Outro
+                        </option>
+
+                        <option value="Nao informado">
+                            Prefiro não informar
                         </option>
 
                     </select>
@@ -158,23 +169,23 @@
                             Selecione
                         </option>
 
-                        <option>
+                        <option value="Solteiro">
                             Solteiro(a)
                         </option>
 
-                        <option>
+                        <option value="Casado">
                             Casado(a)
                         </option>
 
-                        <option>
+                        <option value="Divorciado">
                             Divorciado(a)
                         </option>
 
-                        <option>
+                        <option value="Viuvo">
                             Viúvo(a)
                         </option>
 
-                        <option>
+                        <option value="Uniao estavel">
                             União estável
                         </option>
 
@@ -244,14 +255,17 @@
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- TIPO DE ATENDIMENTO -->
+        <!-- =========================================
+             TIPO DE ATENDIMENTO
+        ========================================== -->
 
-        <div class="secao-formulario">
+        <section class="secao-formulario">
 
             <h3>Tipo de atendimento</h3>
+
 
             <div class="campo">
 
@@ -277,14 +291,17 @@
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- FOTO -->
+        <!-- =========================================
+             FOTO DO PACIENTE
+        ========================================== -->
 
-        <div class="secao-formulario">
+        <section class="secao-formulario">
 
             <h3>Foto do paciente</h3>
+
 
             <div class="upload-foto">
 
@@ -292,7 +309,8 @@
                     📷
                 </div>
 
-                <div>
+
+                <div class="texto-foto">
 
                     <strong>
                         Adicionar foto
@@ -304,6 +322,7 @@
 
                 </div>
 
+
                 <input
                     type="file"
                     id="foto"
@@ -312,40 +331,61 @@
 
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- BOTÃO -->
+        <!-- =========================================
+             BOTÃO
+        ========================================== -->
 
         <button
+            type="button"
             class="btn-cadastrar"
             onclick="cadastrar()"
         >
             Cadastrar paciente
         </button>
 
-    </div>
+    </main>
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script>
 
         function cadastrar() {
 
             const nome =
-                document.getElementById("nome").value;
+                document.getElementById("nome").value.trim();
 
             const cpf =
-                document.getElementById("cpf").value;
+                document.getElementById("cpf").value.trim();
 
             const tipo =
                 document.getElementById("tipo").value;
 
 
-            if (!nome || !cpf || !tipo) {
+            if (!nome) {
 
-                alert(
-                    "Preencha o nome, CPF/RG e tipo de atendimento."
-                );
+                alert("Digite o nome do paciente.");
+
+                return;
+            }
+
+
+            if (!cpf) {
+
+                alert("Digite o CPF/RG do paciente.");
+
+                return;
+            }
+
+
+            if (!tipo) {
+
+                alert("Selecione o tipo de atendimento.");
 
                 return;
             }
@@ -362,7 +402,9 @@
                 body: JSON.stringify({
 
                     nome: nome,
+
                     cpf: cpf,
+
                     tipo: tipo
 
                 })
@@ -372,25 +414,32 @@
             .then(response => {
 
                 if (!response.ok) {
-                    throw new Error("Erro no cadastro");
+
+                    throw new Error(
+                        "Erro ao cadastrar paciente"
+                    );
+
                 }
 
                 return response.json();
 
             })
 
-            .then(() => {
+            .then(data => {
 
                 alert(
+                    data.mensagem ||
                     "Paciente enviado para triagem!"
                 );
 
             })
 
-            .catch(() => {
+            .catch(error => {
+
+                console.error(error);
 
                 alert(
-                    "Erro ao enviar o paciente para triagem."
+                    "Não foi possível enviar o paciente para a triagem."
                 );
 
             });
