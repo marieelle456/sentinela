@@ -1,2 +1,1285 @@
-/* ========================================= HOSPITAL SENTINELA TEMA AZUL ESCURO + AZUL CLARO COM EFEITOS ESFUMADOS ========================================= */ * { box-sizing: border-box; } body { font-family: Arial, Helvetica, sans-serif; margin: 0; min-height: 100vh; /* Fundo com esfumados */ background: radial-gradient( circle at 10% 10%, rgba(96, 165, 250, 0.45), transparent 35% ), radial-gradient( circle at 90% 90%, rgba(37, 99, 235, 0.40), transparent 35% ), radial-gradient( circle at 50% 0%, rgba(147, 197, 253, 0.30), transparent 40% ), linear-gradient( 135deg, #dbeafe, #eff6ff, #bfdbfe ); color: #0f2a4a; } /* ========================================= CONTAINER PRINCIPAL ========================================= */ .container { width: 90%; max-width: 900px; margin: 40px auto; padding: 35px; background: rgba(255, 255, 255, 0.94); border-radius: 25px; border: 1px solid rgba(147, 197, 253, 0.7); box-shadow: 0 20px 45px rgba(15, 42, 74, 0.18), 0 0 35px rgba(59, 130, 246, 0.15); backdrop-filter: blur(12px); } /* ========================================= TÍTULOS ========================================= */ h1 { color: #0b2e59; text-align: center; } h2 { color: #0b2e59; text-align: center; font-size: 28px; margin-top: 0; text-shadow: 0 2px 10px rgba(37, 99, 235, 0.15); } h3 { color: #1456a0; } /* ========================================= LINHA ========================================= */ hr { border: none; height: 1px; background: linear-gradient( 90deg, transparent, #93c5fd, transparent ); margin: 30px 0; } /* ========================================= CAMPOS ========================================= */ input, select, textarea, button { width: 100%; padding: 14px 16px; margin-top: 12px; border-radius: 12px; font-size: 16px; font-family: inherit; box-sizing: border-box; } /* Campos */ input, select, textarea { border: 2px solid #bfdbfe; background: rgba(239, 246, 255, 0.85); color: #0f2a4a; outline: none; transition: all 0.3s ease; } /* Placeholder */ input::placeholder, textarea::placeholder { color: #6b8db5; } /* Quando clicar */ input:focus, select:focus, textarea:focus { border-color: #3b82f6; background: #ffffff; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12), 0 5px 15px rgba(37, 99, 235, 0.08); } /* Textarea */ textarea { min-height: 110px; resize: vertical; } /* ========================================= BOTÃO PRINCIPAL ========================================= */ button { border: none; background: linear-gradient( 135deg, #0b2e59, #155eaa, #3b82f6 ); background-size: 200% 200%; color: white; font-size: 17px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #082342, 0 10px 25px rgba(15, 76, 129, 0.30); transition: all 0.25s ease; } /* Hover */ button:hover { transform: translateY(-3px); background-position: 100% 50%; box-shadow: 0 9px 0 #082342, 0 15px 30px rgba(37, 99, 235, 0.35); } /* Clique */ button:active { transform: translateY(3px); box-shadow: 0 3px 0 #082342, 0 6px 12px rgba(37, 99, 235, 0.25); } /* ========================================= CARDS ========================================= */ .card { padding: 20px; margin: 18px 0; border-radius: 16px; background: rgba(255, 255, 255, 0.95); border: 1px solid #bfdbfe; box-shadow: 0 7px 20px rgba(15, 42, 74, 0.10); transition: all 0.25s ease; } /* Hover dos cards */ .card:hover { transform: translateY(-3px); border-color: #93c5fd; box-shadow: 0 10px 25px rgba(15, 42, 74, 0.16); } .card h3 { margin-top: 0; color: #1456a0; } .card p { color: #315579; line-height: 1.5; } /* ========================================= TRIAGEM - CORES DE RISCO ========================================= */ .verde, .amarelo, .vermelho { display: inline-block; padding: 7px 14px; border-radius: 20px; font-weight: bold; text-transform: uppercase; font-size: 13px; } /* Verde */ .verde { background: #22c55e; color: white; box-shadow: 0 3px 10px rgba(34, 197, 94, 0.25); } /* Amarelo */ .amarelo { background: #facc15; color: #4a3800; box-shadow: 0 3px 10px rgba(250, 204, 21, 0.25); } /* Vermelho */ .vermelho { background: #ef4444; color: white; box-shadow: 0 3px 10px rgba(239, 68, 68, 0.25); } /* ========================================= RESULTADO DA TRIAGEM ========================================= */ #resultado { margin-top: 20px; padding: 14px; border-radius: 12px; text-align: center; font-weight: bold; background: #eff6ff; border: 1px solid #bfdbfe; color: #0b2e59; } /* ========================================= LINKS ========================================= */ a { color: #1456a0; font-weight: bold; text-decoration: none; transition: 0.2s; } a:hover { color: #3b82f6; } /* ========================================= BOTÃO SECUNDÁRIO / PDF ========================================= */ .btn-pdf { background: white; color: #1456a0; border: 2px solid #93c5fd; box-shadow: none; } .btn-pdf:hover { background: #eff6ff; color: #0b2e59; border-color: #3b82f6; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.15); } /* ========================================= RESPONSIVO ========================================= */ @media (max-width: 600px) { .container { width: 92%; padding: 22px; margin: 20px auto; } h2 { font-size: 24px; } input, select, textarea, button { font-size: 15px; } .card { padding: 16px; } } /* ========================================= IMPRESSÃO / PDF ========================================= */ @media print { body { background: white; } .container { width: 100%; max-width: none; margin: 0; box-shadow: none; border: none; } button { display: none; } } /* ========================================= IMPRESSÃO SOMENTE DA CONSULTA ========================================= */ @media print { body * { visibility: hidden; } #areaConsulta, #areaConsulta * { visibility: visible; } #areaConsulta { position: absolute; left: 0; top: 0; width: 100%; padding: 30px; background: white; color: #000; } .botoesConsulta { display: none !important; } #areaConsulta input, #areaConsulta select, #areaConsulta textarea { border: 1px solid #999; background: white; color: #000; } body { background: white !important; } }
-/* ========================================= ATENDIMENTO HOSPITAL SENTINELA ========================================= */ .atendimento { position: relative; overflow: hidden; } /* ========================================= EFEITOS ESFUMADOS NO CONTAINER ========================================= */ .atendimento::before { content: ""; position: absolute; width: 280px; height: 280px; top: -140px; right: -100px; background: #93c5fd; border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; } .atendimento::after { content: ""; position: absolute; width: 250px; height: 250px; bottom: -130px; left: -100px; background: #2563eb; border-radius: 50%; filter: blur(90px); opacity: 0.18; pointer-events: none; } /* ========================================= CABEÇALHO ========================================= */ .cabecalho-atendimento { display: flex; align-items: center; justify-content: center; gap: 18px; position: relative; z-index: 2; } .cabecalho-atendimento h1 { margin: 0; color: #0b2e59; font-size: 30px; text-align: left; } .cabecalho-atendimento p { margin: 5px 0 0; color: #52749a; font-size: 15px; } /* ========================================= ÍCONE DO HOSPITAL ========================================= */ .icone-hospital { width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 16px; color: white; font-size: 32px; font-weight: bold; background: linear-gradient( 135deg, #0b2e59, #2563eb ); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.30); } /* ========================================= TÍTULO ========================================= */ .titulo-atendimento { position: relative; z-index: 2; margin-bottom: 25px; } .titulo-atendimento h2 { margin-bottom: 5px; } .titulo-atendimento p { text-align: center; color: #6683a3; margin-top: 0; font-size: 15px; } /* ========================================= SEÇÕES DO FORMULÁRIO ========================================= */ .secao-formulario { position: relative; z-index: 2; margin-top: 22px; padding: 22px; border-radius: 18px; background: linear-gradient( 135deg, rgba(239, 246, 255, 0.90), rgba(255, 255, 255, 0.95) ); border: 1px solid #bfdbfe; box-shadow: 0 8px 22px rgba(15, 42, 74, 0.07); } .secao-formulario h3 { margin-top: 0; margin-bottom: 18px; font-size: 19px; color: #0b3d73; display: flex; align-items: center; gap: 8px; } .secao-formulario h3::before { content: ""; width: 5px; height: 22px; border-radius: 10px; background: linear-gradient( #0b2e59, #60a5fa ); } /* ========================================= CAMPOS LADO A LADO ========================================= */ .linha-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; } /* ========================================= CAMPO ========================================= */ .campo { display: flex; flex-direction: column; } .campo label { margin-top: 10px; margin-bottom: 6px; font-size: 14px; font-weight: bold; color: #244b70; } .campo input, .campo select { margin-top: 0; } /* ========================================= UPLOAD DE FOTO ========================================= */ .upload-foto { position: relative; display: flex; align-items: center; gap: 15px; padding: 18px; border-radius: 14px; border: 2px dashed #93c5fd; background: linear-gradient( 135deg, #eff6ff, #ffffff ); transition: 0.3s; } .upload-foto:hover { border-color: #2563eb; background: #dbeafe; } .icone-camera { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #dbeafe; font-size: 23px; } .upload-foto strong { color: #0b3d73; } .upload-foto p { margin: 4px 0 0; color: #6b87a5; font-size: 13px; } .upload-foto input[type="file"] { margin: 0; padding: 8px; border: none; background: transparent; color: #1456a0; } /* ========================================= BOTÃO CADASTRAR ========================================= */ .btn-cadastrar { position: relative; z-index: 2; margin-top: 25px; padding: 16px; border-radius: 14px; background: linear-gradient( 135deg, #082b52, #145da0, #3b82f6 ); background-size: 200% 200%; box-shadow: 0 8px 0 #061d38, 0 14px 25px rgba(20, 93, 160, 0.30); transition: all 0.3s ease; } .btn-cadastrar:hover { background-position: 100% 50%; transform: translateY(-3px); box-shadow: 0 11px 0 #061d38, 0 18px 30px rgba(37, 99, 235, 0.35); } /* ========================================= RESPONSIVO ========================================= */ @media (max-width: 700px) { .linha-campos { grid-template-columns: 1fr; gap: 5px; } .cabecalho-atendimento { flex-direction: column; text-align: center; } .cabecalho-atendimento h1 { text-align: center; font-size: 25px; } .secao-formulario { padding: 17px; } .upload-foto { flex-direction: column; text-align: center; } }
+/* =========================================================
+   HOSPITAL SENTINELA
+   TEMA: AZUL ESCURO + AZUL CLARO
+   ESTILO MODERNO + EFEITO ESFUMADO
+   ========================================================= */
+
+
+/* =========================================================
+   CONFIGURAÇÃO GERAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    color: #0f2a4a;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(96, 165, 250, 0.45),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 95% 90%,
+            rgba(37, 99, 235, 0.40),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(147, 197, 253, 0.35),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            #dbeafe 0%,
+            #eff6ff 45%,
+            #bfdbfe 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
+
+.container {
+
+    width: 90%;
+
+    max-width: 950px;
+
+    margin: 40px auto;
+
+    padding: 35px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: 1px solid rgba(147, 197, 253, 0.7);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 45px rgba(15, 42, 74, 0.18),
+        0 0 35px rgba(59, 130, 246, 0.15);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   EFEITO ESFUMADO DO CONTAINER
+   ========================================================= */
+
+.container::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    top: -150px;
+
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    filter: blur(90px);
+
+    opacity: 0.20;
+
+    pointer-events: none;
+}
+
+
+.container::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+
+    height: 250px;
+
+    bottom: -130px;
+
+    left: -100px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    filter: blur(100px);
+
+    opacity: 0.12;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TÍTULOS
+   ========================================================= */
+
+h1 {
+
+    color: #082b52;
+
+    text-align: center;
+
+    font-size: 30px;
+
+    margin-top: 0;
+
+    margin-bottom: 8px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+h2 {
+
+    color: #0b2e59;
+
+    text-align: center;
+
+    font-size: 28px;
+
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+    position: relative;
+
+    z-index: 2;
+
+    text-shadow:
+        0 3px 12px rgba(37, 99, 235, 0.15);
+}
+
+
+h3 {
+
+    color: #1456a0;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   PARÁGRAFOS
+   ========================================================= */
+
+p {
+
+    color: #52749a;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   LINHA
+   ========================================================= */
+
+hr {
+
+    border: none;
+
+    height: 1px;
+
+    margin: 30px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #93c5fd,
+            #3b82f6,
+            #93c5fd,
+            transparent
+        );
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   CAMPOS GERAIS
+   ========================================================= */
+
+input,
+select,
+textarea,
+button {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    margin-top: 12px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   INPUTS / SELECT / TEXTAREA
+   ========================================================= */
+
+input,
+select,
+textarea {
+
+    border: 2px solid #bfdbfe;
+
+    background:
+        rgba(239, 246, 255, 0.90);
+
+    color: #0f2a4a;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #6b8db5;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FOCO NOS CAMPOS
+   ========================================================= */
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    border-color: #3b82f6;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.12),
+        0 7px 18px rgba(37, 99, 235, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+textarea {
+
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   BOTÃO PADRÃO
+   ========================================================= */
+
+button {
+
+    border: none;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #082b52,
+            #145da0,
+            #2563eb,
+            #60a5fa
+        );
+
+    background-size: 250% 250%;
+
+    box-shadow:
+        0 6px 0 #061d38,
+        0 12px 25px rgba(20, 93, 160, 0.30);
+
+    transition: all 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER BOTÃO
+   ========================================================= */
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    background-position: 100% 50%;
+
+    box-shadow:
+        0 9px 0 #061d38,
+        0 18px 30px rgba(37, 99, 235, 0.35);
+}
+
+
+/* =========================================================
+   BOTÃO AO CLICAR
+   ========================================================= */
+
+button:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 3px 0 #061d38,
+        0 7px 14px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+
+    padding: 20px;
+
+    margin: 18px 0;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border: 1px solid #bfdbfe;
+
+    box-shadow:
+        0 8px 22px rgba(15, 42, 74, 0.10);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #93c5fd;
+
+    box-shadow:
+        0 12px 28px rgba(15, 42, 74, 0.16);
+}
+
+
+.card h3 {
+
+    margin-top: 0;
+
+    color: #1456a0;
+}
+
+
+.card p {
+
+    color: #315579;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TRIAGEM
+   ========================================================= */
+
+.verde,
+.amarelo,
+.vermelho {
+
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+}
+
+
+/* VERDE */
+
+.verde {
+
+    background: #22c55e;
+
+    color: white;
+
+    box-shadow:
+        0 3px 10px rgba(34, 197, 94, 0.25);
+}
+
+
+/* AMARELO */
+
+.amarelo {
+
+    background: #facc15;
+
+    color: #4a3800;
+
+    box-shadow:
+        0 3px 10px rgba(250, 204, 21, 0.25);
+}
+
+
+/* VERMELHO */
+
+.vermelho {
+
+    background: #ef4444;
+
+    color: white;
+
+    box-shadow:
+        0 3px 10px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================================================
+   RESULTADO DA TRIAGEM
+   ========================================================= */
+
+#resultado {
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+
+    color: #0b2e59;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+
+    color: #1456a0;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+a:hover {
+
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   BOTÃO PDF
+   ========================================================= */
+
+.btn-pdf {
+
+    background: white;
+
+    color: #1456a0;
+
+    border: 2px solid #93c5fd;
+
+    box-shadow: none;
+}
+
+
+.btn-pdf:hover {
+
+    background: #eff6ff;
+
+    color: #0b2e59;
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 5px 15px rgba(37, 99, 235, 0.15);
+}
+
+
+/* =========================================================
+   =========================================================
+   PARTE DE ATENDIMENTO
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+   CONTAINER DO ATENDIMENTO
+   ========================================================= */
+
+.atendimento {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ESFUMADO ESPECÍFICO DO ATENDIMENTO
+   ========================================================= */
+
+.atendimento::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+
+    height: 320px;
+
+    top: -170px;
+
+    right: -120px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    filter: blur(90px);
+
+    opacity: 0.28;
+
+    pointer-events: none;
+}
+
+
+.atendimento::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    bottom: -150px;
+
+    left: -120px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    filter: blur(100px);
+
+    opacity: 0.16;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CABEÇALHO DO ATENDIMENTO
+   ========================================================= */
+
+.cabecalho-atendimento {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+.cabecalho-atendimento h1 {
+
+    margin: 0;
+
+    color: #082b52;
+
+    font-size: 30px;
+
+    text-align: left;
+}
+
+
+.cabecalho-atendimento p {
+
+    margin: 5px 0 0;
+
+    color: #52749a;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ÍCONE DO HOSPITAL
+   ========================================================= */
+
+.icone-hospital {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 17px;
+
+    color: white;
+
+    font-size: 34px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #082b52,
+            #145da0,
+            #3b82f6
+        );
+
+    box-shadow:
+        0 9px 22px rgba(37, 99, 235, 0.30);
+}
+
+
+/* =========================================================
+   TÍTULO DO ATENDIMENTO
+   ========================================================= */
+
+.titulo-atendimento {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-bottom: 25px;
+}
+
+
+.titulo-atendimento h2 {
+
+    margin-bottom: 5px;
+}
+
+
+.titulo-atendimento p {
+
+    text-align: center;
+
+    color: #6683a3;
+
+    margin-top: 0;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SEÇÕES DO FORMULÁRIO
+   ========================================================= */
+
+.secao-formulario {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 22px;
+
+    padding: 24px;
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239, 246, 255, 0.94),
+            rgba(255, 255, 255, 0.97)
+        );
+
+    border: 1px solid #bfdbfe;
+
+    box-shadow:
+        0 8px 22px rgba(15, 42, 74, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.secao-formulario:hover {
+
+    box-shadow:
+        0 12px 28px rgba(15, 42, 74, 0.12);
+}
+
+
+/* =========================================================
+   TÍTULO DAS SEÇÕES
+   ========================================================= */
+
+.secao-formulario h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    font-size: 19px;
+
+    color: #0b3d73;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.secao-formulario h3::before {
+
+    content: "";
+
+    width: 5px;
+
+    height: 23px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            #082b52,
+            #60a5fa
+        );
+}
+
+
+/* =========================================================
+   CAMPOS LADO A LADO
+   ========================================================= */
+
+.linha-campos {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   CAMPO INDIVIDUAL
+   ========================================================= */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.campo label {
+
+    margin-top: 10px;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #244b70;
+}
+
+
+.campo input,
+.campo select {
+
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.campo select {
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   UPLOAD DA FOTO
+   ========================================================= */
+
+.upload-foto {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    border: 2px dashed #93c5fd;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #ffffff
+        );
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+.upload-foto:hover {
+
+    border-color: #2563eb;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #ffffff
+        );
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ÍCONE DA CÂMERA
+   ========================================================= */
+
+.icone-camera {
+
+    width: 50px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #dbeafe;
+
+    font-size: 23px;
+
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.12);
+}
+
+
+.upload-foto strong {
+
+    color: #0b3d73;
+
+    font-size: 15px;
+}
+
+
+.upload-foto p {
+
+    margin: 4px 0 0;
+
+    color: #6b87a5;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   INPUT DE ARQUIVO
+   ========================================================= */
+
+.upload-foto input[type="file"] {
+
+    margin: 0;
+
+    padding: 8px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #1456a0;
+
+    box-shadow: none;
+}
+
+
+.upload-foto input[type="file"]:focus {
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   BOTÃO CADASTRAR
+   ========================================================= */
+
+.btn-cadastrar {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 28px;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061d38,
+            #0b3d73,
+            #145da0,
+            #3b82f6
+        );
+
+    background-size: 250% 250%;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 7px 0 #061d38,
+        0 14px 28px rgba(20, 93, 160, 0.30);
+}
+
+
+.btn-cadastrar:hover {
+
+    background-position: 100% 50%;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 0 #061d38,
+        0 18px 32px rgba(37, 99, 235, 0.35);
+}
+
+
+.btn-cadastrar:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 3px 0 #061d38,
+        0 7px 14px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width: 92%;
+
+        padding: 22px;
+
+        margin: 20px auto;
+    }
+
+
+    .linha-campos {
+
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+    }
+
+
+    .cabecalho-atendimento {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .cabecalho-atendimento h1 {
+
+        text-align: center;
+
+        font-size: 25px;
+    }
+
+
+    .cabecalho-atendimento p {
+
+        text-align: center;
+    }
+
+
+    .titulo-atendimento h2 {
+
+        font-size: 24px;
+    }
+
+
+    .secao-formulario {
+
+        padding: 18px;
+    }
+
+
+    .upload-foto {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .upload-foto input[type="file"] {
+
+        width: 100%;
+    }
+
+
+    input,
+    select,
+    textarea,
+    button {
+
+        font-size: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   IMPRESSÃO / PDF
+   ========================================================= */
+
+@media print {
+
+    body {
+
+        background: white !important;
+    }
+
+
+    .container {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 20px;
+
+        box-shadow: none;
+
+        border: none;
+    }
+
+
+    button {
+
+        display: none;
+    }
+
+
+    .atendimento::before,
+    .atendimento::after {
+
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   IMPRESSÃO SOMENTE DA CONSULTA
+   ========================================================= */
+
+@media print {
+
+    body * {
+
+        visibility: hidden;
+    }
+
+
+    #areaConsulta,
+    #areaConsulta * {
+
+        visibility: visible;
+    }
+
+
+    #areaConsulta {
+
+        position: absolute;
+
+        left: 0;
+
+        top: 0;
+
+        width: 100%;
+
+        padding: 30px;
+
+        background: white;
+
+        color: #000;
+    }
+
+
+    .botoesConsulta {
+
+        display: none !important;
+    }
+
+
+    #areaConsulta input,
+    #areaConsulta select,
+    #areaConsulta textarea {
+
+        border: 1px solid #999;
+
+        background: white;
+
+        color: #000;
+    }
+
+
+    body {
+
+        background: white !important;
+    }
+
+}
