@@ -398,9 +398,126 @@
         login();
       }
 
-    });
-  </script>
 
+      
+<script>
+function classificarRisco(sintoma, temperatura) {
+  const emergencias = [
+    "infarto", "avc", "convulsao",
+    "hemorragia", "falta_ar_grave"
+  ];
+
+  if (
+    emergencias.includes(sintoma) ||
+    (temperatura !== null && temperatura >= 39)
+  ) {
+    return "vermelho";
+  }
+
+  if ([
+    "febre", "vomito", "diarreia", "falta_ar_moderada"
+  ].includes(sintoma)) {
+    return "amarelo";
+  }
+
+  return "verde";
+}
+
+async function salvar() {
+  const nome = document.getElementById("nome").value.trim();
+  const sintoma = document.getElementById("sintoma").value;
+  const tempTexto = document.getElementById("temp").value;
+  const alergia = document.getElementById("alergia").value.trim();
+  const observacao = document.getElementById("observacao").value.trim();
+  const resultado = document.getElementById("resultado");
+
+  if (!nome || !sintoma) {
+    alert("Informe o nome e selecione um sintoma.");
+    return;
+  }
+
+  const temperatura = tempTexto === ""
+    ? null
+    : Number(tempTexto);
+
+  if (
+    temperatura !== null &&
+    (!Number.isFinite(temperatura) ||
+     temperatura < 25 || temperatura > 45)
+  ) {
+    alert("Verifique a temperatura informada.");
+    return;
+  }
+
+  const risco = classificarRisco(sintoma, temperatura);
+
+  resultado.className = risco;
+  resultado.textContent =
+    "Classificação preliminar: " + risco.toUpperCase() +
+    ". Solicitando interpretação da IA...";
+
+  try {
+    const salvamento = await fetch("/triagem", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nome, sintoma, temperatura, alergia, observacao, risco
+      })
+    });
+
+    if (!salvamento.ok) {
+      throw new Error("Erro ao salvar a triagem.");
+    }
+
+    const resposta = await fetch("/interpretar-ia", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sintoma,
+        temperatura,
+        alergia,
+        observacao,
+        riscoInicial: risco
+      })
+    });
+
+    if (!resposta.ok) {
+      throw new Error("Triagem salva, mas a IA está indisponível.");
+    }
+
+    const ia = await resposta.json();
+
+    resultado.replaceChildren();
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = "Classificação preliminar: " + risco.toUpperCase();
+
+    const texto = document.createElement("p");
+    texto.textContent = "Interpretação da IA: " + ia.interpretacao;
+
+    const justificativa = document.createElement("p");
+    justificativa.textContent = "Justificativa: " + ia.justificativa;
+
+    const alertas = document.createElement("p");
+    alertas.textContent = "Sinais de alerta: " + ia.alertas;
+
+    const aviso = document.createElement("p");
+    aviso.textContent =
+      "A IA não substitui a avaliação de um profissional de saúde.";
+
+    resultado.append(titulo, texto, justificativa, alertas, aviso);
+
+  } catch (erro) {
+    resultado.textContent =
+      "Classificação preliminar: " + risco.toUpperCase() +
+      ". " + erro.message;
+
+    alert(erro.message);
+  }
+}
+    });
+</script>
+    
 </body>
 
 </html>
