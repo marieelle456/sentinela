@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,11 +16,9 @@
     body {
       margin: 0;
       min-height: 100vh;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
       font-family: Arial, sans-serif;
 
       background:
@@ -28,20 +27,17 @@
         #020b1c;
 
       color: white;
+      padding: 20px;
     }
 
     .container {
       width: 90%;
       max-width: 420px;
-
       padding: 45px 35px;
-
       text-align: center;
 
       background: rgba(5, 24, 50, 0.95);
-
       border: 1px solid #2196f3;
-
       border-radius: 25px;
 
       box-shadow:
@@ -51,11 +47,8 @@
 
     h2 {
       margin: 0 0 10px;
-
       color: #7dd3fc;
-
       font-size: 30px;
-
       letter-spacing: 1px;
 
       text-shadow:
@@ -66,32 +59,20 @@
 
     .subtitulo {
       margin-bottom: 30px;
-
       color: #60a5fa;
-
-      text-shadow:
-        0 0 6px #3b82f6;
+      text-shadow: 0 0 6px #3b82f6;
     }
 
     input {
       width: 100%;
-
       padding: 15px;
-
       margin: 10px 0;
-
       border-radius: 12px;
-
       border: 1px solid #2563eb;
-
       background: #061a35;
-
       color: #e0f2fe;
-
       font-size: 16px;
-
       outline: none;
-
       transition: 0.3s;
     }
 
@@ -101,7 +82,6 @@
 
     input:focus {
       border-color: #38bdf8;
-
       box-shadow:
         0 0 8px #0ea5e9,
         0 0 20px rgba(14, 165, 233, 0.4);
@@ -109,29 +89,16 @@
 
     button {
       width: 100%;
-
       margin-top: 25px;
-
       padding: 15px;
-
       border: none;
-
       border-radius: 14px;
 
-      background: linear-gradient(
-        135deg,
-        #7dd3fc,
-        #38bdf8
-      );
-
+      background: linear-gradient(135deg, #7dd3fc, #38bdf8);
       color: #ffffff;
-
       font-size: 18px;
-
       font-weight: bold;
-
       cursor: pointer;
-
       letter-spacing: 1px;
 
       text-shadow:
@@ -147,26 +114,20 @@
       transition: all 0.25s ease;
     }
 
-    button:hover {
-      transform: translateY(-6px);
-
-      background: linear-gradient(
-        135deg,
-        #bae6fd,
-        #7dd3fc
-      );
+    button:hover:not(:disabled) {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
 
       box-shadow:
         0 0 10px #e0f2fe,
         0 0 25px #38bdf8,
         0 0 45px #0ea5e9,
-        0 12px 0 #0284c7,
-        0 25px 40px rgba(14, 165, 233, 0.6);
+        0 8px 0 #0284c7,
+        0 20px 35px rgba(14, 165, 233, 0.6);
     }
 
-    button:active {
+    button:active:not(:disabled) {
       transform: translateY(3px);
-
       box-shadow:
         0 0 5px #38bdf8,
         0 0 15px #0ea5e9,
@@ -175,19 +136,16 @@
 
     button:disabled {
       opacity: 0.7;
-      cursor: not-allowed;
+      cursor: wait;
       transform: none;
     }
 
     #mensagem {
       margin-top: 18px;
-
       min-height: 22px;
-
+      overflow-wrap: anywhere;
       color: #7dd3fc;
-
       font-weight: bold;
-
       text-shadow:
         0 0 5px #38bdf8,
         0 0 10px #0ea5e9;
@@ -195,7 +153,6 @@
 
     #mensagem.erro {
       color: #f87171;
-
       text-shadow:
         0 0 5px #ef4444,
         0 0 10px #dc2626;
@@ -203,7 +160,6 @@
 
     #mensagem.sucesso {
       color: #4ade80;
-
       text-shadow:
         0 0 5px #22c55e,
         0 0 10px #16a34a;
@@ -213,16 +169,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       margin-bottom: 15px;
     }
 
     .logo img {
       width: 110px;
       height: 110px;
-
       object-fit: contain;
-
       border-radius: 50%;
 
       filter:
@@ -235,7 +188,6 @@
 
     .logo img:hover {
       transform: scale(1.08);
-
       filter:
         drop-shadow(0 0 8px #e0f2fe)
         drop-shadow(0 0 20px #38bdf8)
@@ -256,7 +208,7 @@
 
 <body>
 
-  <div class="container">
+  <main class="container">
 
     <div class="logo">
       <img src="logoo.png" alt="Logo Hospital Sentinela">
@@ -264,260 +216,125 @@
 
     <h2>Hospital Sentinela</h2>
 
-    <p class="subtitulo">
-      Sistema de Atendimento
-    </p>
+    <p class="subtitulo">Sistema de Atendimento</p>
 
-    <input
-      id="usuario"
-      type="text"
-      placeholder="Usuário"
-      autocomplete="username"
-    >
+    <form id="formLogin">
+      <input
+        id="usuario"
+        name="usuario"
+        type="text"
+        placeholder="Usuário"
+        autocomplete="username"
+        aria-label="Usuário"
+        required
+      >
 
-    <input
-      id="senha"
-      type="password"
-      placeholder="Senha"
-      autocomplete="current-password"
-    >
+      <input
+        id="senha"
+        name="senha"
+        type="password"
+        placeholder="Senha"
+        autocomplete="current-password"
+        aria-label="Senha"
+        required
+      >
 
-    <button id="btnEntrar" type="button" onclick="login()">
-      ENTRAR
-    </button>
+      <button id="btnEntrar" type="submit">
+        ENTRAR
+      </button>
+    </form>
 
-    <div id="mensagem"></div>
+    <div id="mensagem" role="status" aria-live="polite"></div>
 
-  </div>
+  </main>
 
   <script>
-    async function login() {
-
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("formLogin");
       const usuarioInput = document.getElementById("usuario");
       const senhaInput = document.getElementById("senha");
-      const mensagem = document.getElementById("mensagem");
       const btnEntrar = document.getElementById("btnEntrar");
+      const mensagem = document.getElementById("mensagem");
 
-      const usuario = usuarioInput.value.trim();
-      const senha = senhaInput.value.trim();
+      let enviando = false;
 
-      mensagem.className = "";
-      mensagem.textContent = "";
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      // Verifica campos vazios
-      if (usuario === "" || senha === "") {
-        mensagem.textContent = "Preencha usuário e senha.";
-        mensagem.className = "erro";
-        return;
-      }
+        if (enviando) return;
 
-      // Desabilita o botão enquanto faz o login
-      btnEntrar.disabled = true;
-      btnEntrar.textContent = "ENTRANDO...";
+        const usuario = usuarioInput.value.trim();
+        const senha = senhaInput.value;
 
-      try {
+        mensagem.textContent = "";
+        mensagem.className = "";
 
-        const response = await fetch("/login", {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            usuario: usuario,
-            senha: senha
-          })
-        });
-
-        const data = await response.json();
-
-        // Login inválido
-        if (!response.ok) {
-          mensagem.textContent = data.erro || "Usuário ou senha inválidos.";
+        if (!usuario || !senha.trim()) {
+          mensagem.textContent = "Preencha o usuário e a senha.";
           mensagem.className = "erro";
-
-          btnEntrar.disabled = false;
-          btnEntrar.textContent = "ENTRAR";
-
           return;
         }
 
-        // Login realizado
-        mensagem.textContent = "Login realizado com sucesso!";
-        mensagem.className = "sucesso";
+        enviando = true;
+        btnEntrar.disabled = true;
+        btnEntrar.textContent = "ENTRANDO...";
 
-        // Redireciona de acordo com o tipo de usuário
-        if (data.tipo === "triagem") {
+        try {
+          const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              usuario: usuario,
+              senha: senha
+            })
+          });
 
-          window.location.href = "triagem.html";
+          const data = await response.json().catch(() => ({}));
 
-        } else if (data.tipo === "medico") {
+          if (!response.ok) {
+            throw new Error(
+              data.erro ||
+              data.mensagem ||
+              "Usuário ou senha inválidos."
+            );
+          }
 
-          window.location.href = "medico.html";
+          const paginas = {
+            triagem: "triagem.html",
+            medico: "medico.html",
+            atendimento: "atendimento.html"
+          };
 
-        } else if (data.tipo === "atendimento") {
+          if (!data.tipo || !paginas[data.tipo]) {
+            throw new Error(
+              "O servidor não retornou um tipo de usuário válido."
+            );
+          }
 
-          window.location.href = "atendimento.html";
+          mensagem.textContent = "Login realizado com sucesso!";
+          mensagem.className = "sucesso";
 
-        } else {
+          window.location.href = paginas[data.tipo];
 
-          mensagem.textContent = "Tipo de usuário não encontrado.";
+        } catch (error) {
+          console.error("Erro no login:", error);
+
+          mensagem.textContent =
+            error.message ||
+            "Não foi possível conectar ao servidor. Tente novamente.";
+
           mensagem.className = "erro";
 
+        } finally {
+          enviando = false;
           btnEntrar.disabled = false;
           btnEntrar.textContent = "ENTRAR";
         }
-
-      } catch (error) {
-
-        console.error("Erro no login:", error);
-
-        mensagem.textContent =
-          "Não foi possível conectar ao servidor.";
-
-        mensagem.className = "erro";
-
-        btnEntrar.disabled = false;
-        btnEntrar.textContent = "ENTRAR";
-      }
-    }
-
-    // Permite apertar ENTER para fazer login
-    document.getElementById("senha").addEventListener("keydown", function(event) {
-
-      if (event.key === "Enter") {
-        login();
-      }
-
+      });
     });
+  </script>
 
-    document.getElementById("usuario").addEventListener("keydown", function(event) {
-
-      if (event.key === "Enter") {
-        login();
-      }
-
-
-      
-<script>
-function classificarRisco(sintoma, temperatura) {
-  const emergencias = [
-    "infarto", "avc", "convulsao",
-    "hemorragia", "falta_ar_grave"
-  ];
-
-  if (
-    emergencias.includes(sintoma) ||
-    (temperatura !== null && temperatura >= 39)
-  ) {
-    return "vermelho";
-  }
-
-  if ([
-    "febre", "vomito", "diarreia", "falta_ar_moderada"
-  ].includes(sintoma)) {
-    return "amarelo";
-  }
-
-  return "verde";
-}
-
-async function salvar() {
-  const nome = document.getElementById("nome").value.trim();
-  const sintoma = document.getElementById("sintoma").value;
-  const tempTexto = document.getElementById("temp").value;
-  const alergia = document.getElementById("alergia").value.trim();
-  const observacao = document.getElementById("observacao").value.trim();
-  const resultado = document.getElementById("resultado");
-
-  if (!nome || !sintoma) {
-    alert("Informe o nome e selecione um sintoma.");
-    return;
-  }
-
-  const temperatura = tempTexto === ""
-    ? null
-    : Number(tempTexto);
-
-  if (
-    temperatura !== null &&
-    (!Number.isFinite(temperatura) ||
-     temperatura < 25 || temperatura > 45)
-  ) {
-    alert("Verifique a temperatura informada.");
-    return;
-  }
-
-  const risco = classificarRisco(sintoma, temperatura);
-
-  resultado.className = risco;
-  resultado.textContent =
-    "Classificação preliminar: " + risco.toUpperCase() +
-    ". Solicitando interpretação da IA...";
-
-  try {
-    const salvamento = await fetch("/triagem", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nome, sintoma, temperatura, alergia, observacao, risco
-      })
-    });
-
-    if (!salvamento.ok) {
-      throw new Error("Erro ao salvar a triagem.");
-    }
-
-    const resposta = await fetch("/interpretar-ia", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        sintoma,
-        temperatura,
-        alergia,
-        observacao,
-        riscoInicial: risco
-      })
-    });
-
-    if (!resposta.ok) {
-      throw new Error("Triagem salva, mas a IA está indisponível.");
-    }
-
-    const ia = await resposta.json();
-
-    resultado.replaceChildren();
-
-    const titulo = document.createElement("h3");
-    titulo.textContent = "Classificação preliminar: " + risco.toUpperCase();
-
-    const texto = document.createElement("p");
-    texto.textContent = "Interpretação da IA: " + ia.interpretacao;
-
-    const justificativa = document.createElement("p");
-    justificativa.textContent = "Justificativa: " + ia.justificativa;
-
-    const alertas = document.createElement("p");
-    alertas.textContent = "Sinais de alerta: " + ia.alertas;
-
-    const aviso = document.createElement("p");
-    aviso.textContent =
-      "A IA não substitui a avaliação de um profissional de saúde.";
-
-    resultado.append(titulo, texto, justificativa, alertas, aviso);
-
-  } catch (erro) {
-    resultado.textContent =
-      "Classificação preliminar: " + risco.toUpperCase() +
-      ". " + erro.message;
-
-    alert(erro.message);
-  }
-}
-    });
-</script>
-    
 </body>
-
 </html>
