@@ -603,4 +603,5 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`📁 Frontend: ${FRONTEND_DIR}`);
   console.log(`📁 Banco: ${DB_FILE}`);
   console.log("======================================");
+ require("dotenv").config();
 });
