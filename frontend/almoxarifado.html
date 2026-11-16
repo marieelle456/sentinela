@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,6 +60,68 @@
 
           <div class="main-grid">
             
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h2>Entrada de Medicamentos</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="entrada-tabs">
+                    <button class="tab-btn active" id="tabNovo" onclick="setTab('novo')">Novo Medicamento
+                    </button>
+                    <button class="tab=btn" id="tabRepor" onclick="setTab('repor')">Repor Existente</button>
+                </div>
+                
+                <div class="painelNovo">
+                    <div class="form-group">
+                        <label for="emNome">Nome do Medicamento</label>
+                        <input type="text" id="emNome" class="form-control" placeholder="Ex: Paracetamol 750mg"
+                        autocomplete="off">
+                    </div>
+                    <div class="form-group"></div>
+                    <label for="emQtd">Quantidade
+                        <small>(unidades a adicionar)</small>
+                    </label>
+                    <input type="number" id="emQtd" class="form-control" value="10" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="emUnidade">Tipo de Unidade</label>
+                    <select id="emUnidade" class="form-control">
+                        <option value="comprimidos">Comprimidos</option>
+                         <option value="cápsulas">Cápsula</option>
+                          <option value="frascos">Frascos</option>
+                           <option value="ampolas">Ampolas</option>
+                            <option value="sachês">Sachês</option>
+                             <option value="unidades">Unidades</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="emCategoria">Categoria Farmacolígica</label>
+                    <select id="emCategoria" class="form-control">
+                        <option value="Analgésico/Antipirético">Analgésico/Antipirético</option>
+                        <option value="Antibiótico">Antibiótico</option>
+                        <option value="Anti-inflamatório">Anti-inflamatório</option>
+                        <option value="Antialérgico">Antialérgico</option>
+                        <option value="Protetor Gástrico">Protetor Gástrico</option>
+                        <option value="Antiespasmódico">Antiespasmódico</option>
+                        <option value="Solução">Solução</option>
+                        <option value="Vitamina/Suplemento">Vitamina/Suplemento</option>
+                        <option value="Geral">Geral</option>
+                    </select>
+                </div>
+                <button class="btn-full btn-purple" onclick="darEntrada()">Registrar Entrada no Estoque</button>
+            </div>
+
+            <div id="painelRepor" style="display:none">
+                <div class="form-group">
+                    <label for="selReporMed">Selecionar Medicamento</label>
+                    <select id="selReporMed" class="form-control">
+                    </select>
+                    <option value="">-- Selecione --</option>
+                </div>
+            </div>
           </div>
 </body>
 </html>
