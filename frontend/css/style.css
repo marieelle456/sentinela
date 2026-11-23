@@ -440,3 +440,115 @@ body {
         width: 100%;
     }
 }
+
+/* =====================================
+   BOTÕES AZUL-CLARO FLUTUANTES
+===================================== */
+
+/* Botões principais */
+.btn-full,
+.btn-purple {
+    background: linear-gradient(
+        135deg,
+        #7dd3fc,
+        #38bdf8,
+        #0ea5e9
+    );
+
+    color: #073763;
+    font-weight: bold;
+    border: 1px solid #bae6fd;
+    border-radius: 14px;
+
+    box-shadow:
+        0 6px 15px rgba(14, 165, 233, .25),
+        0 3px 0 #0284c7;
+
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+/* Efeito flutuante */
+.btn-full:hover,
+.btn-purple:hover {
+    background: linear-gradient(
+        135deg,
+        #bae6fd,
+        #7dd3fc,
+        #38bdf8
+    );
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 25px rgba(14, 165, 233, .35),
+        0 5px 0 #0284c7;
+}
+
+/* Efeito ao clicar */
+.btn-full:active,
+.btn-purple:active {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 3px 8px rgba(14, 165, 233, .25);
+}
+
+/* Abas */
+.tab-btn {
+    background: linear-gradient(
+        135deg,
+        #e0f2fe,
+        #bae6fd
+    );
+
+    color: #075985;
+    border: 1px solid #7dd3fc;
+
+    box-shadow: 0 4px 10px rgba(14, 165, 233, .15);
+
+    transition: all .3s ease;
+}
+
+.tab-btn:hover {
+    background: #7dd3fc;
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 18px rgba(14, 165, 233, .25);
+}
+
+/* Aba selecionada */
+.tab-btn.active {
+    background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #0284c7
+    );
+
+    color: white;
+    border-color: #38bdf8;
+
+    box-shadow: 0 6px 16px rgba(14, 165, 233, .3);
+}
+
+/* Botão sair */
+.btn-nav {
+    background: linear-gradient(
+        135deg,
+        #e0f2fe,
+        #7dd3fc
+    );
+
+    color: #075985;
+
+    box-shadow: 0 5px 12px rgba(14, 165, 233, .2);
+
+    transition: all .3s ease;
+}
+
+.btn-nav:hover {
+    background: #bae6fd;
+    transform: translateY(-5px);
+
+    box-shadow: 0 9px 20px rgba(14, 165, 233, .3);
+}
