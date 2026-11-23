@@ -552,3 +552,100 @@ body {
 
     box-shadow: 0 9px 20px rgba(14, 165, 233, .3);
 }
+
+
+/* =========================================
+   BOTÕES FLUTUANTES AZUL-CLARO
+========================================= */
+
+button.btn-full,
+button.btn-purple,
+button.tab-btn,
+a.btn-nav {
+
+    background: linear-gradient(
+        135deg,
+        #bae6fd,
+        #7dd3fc,
+        #38bdf8
+    ) !important;
+
+    color: #06456b !important;
+
+    border: 1px solid #7dd3fc !important;
+
+    border-radius: 14px !important;
+
+    font-weight: bold !important;
+
+    box-shadow:
+        0 6px 15px rgba(14, 165, 233, .25),
+        0 4px 0 #0ea5e9 !important;
+
+    transition: all .3s ease !important;
+
+    cursor: pointer;
+}
+
+/* FLUTUAÇÃO AO PASSAR O MOUSE */
+
+button.btn-full:hover,
+button.btn-purple:hover,
+button.tab-btn:hover,
+a.btn-nav:hover {
+
+    background: linear-gradient(
+        135deg,
+        #e0f2fe,
+        #7dd3fc
+    ) !important;
+
+    transform: translateY(-6px) !important;
+
+    box-shadow:
+        0 14px 25px rgba(14, 165, 233, .35),
+        0 5px 0 #0284c7 !important;
+}
+
+/* BOTÃO PRESSIONADO */
+
+button.btn-full:active,
+button.btn-purple:active,
+button.tab-btn:active,
+a.btn-nav:active {
+
+    transform: translateY(2px) !important;
+
+    box-shadow: 0 2px 5px rgba(14, 165, 233, .2) !important;
+}
+
+/* ABA ATIVA */
+
+button.tab-btn.active {
+
+    background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #0284c7
+    ) !important;
+
+    color: white !important;
+}
+
+/* ANIMAÇÃO SUAVE CONTÍNUA */
+
+@keyframes flutuar {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+button.btn-full {
+    animation: flutuar 3s ease-in-out infinite;
+}
+
